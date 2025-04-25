@@ -200,7 +200,7 @@ const galleryData = [
   },
   {
     id: 24,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Altamira cave painting",
+    src: "/barcelona-jersey-wall.png",
     alt: "Bisonte de Altamira",
     category: "Historia",
     museum: "Museo de Altamira",

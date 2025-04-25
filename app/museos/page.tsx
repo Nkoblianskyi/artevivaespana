@@ -28,7 +28,7 @@ export default function MuseosPage() {
     {
       id: 3,
       name: "Museo del Fútbol Club Barcelona",
-      image: "/placeholder.svg?key=bnw62",
+      image: "/barcelona-museum.png",
       description: "Recorre la historia del club blaugrana y admira sus numerosos trofeos y recuerdos históricos.",
       category: "Deporte",
       location: "Barcelona",

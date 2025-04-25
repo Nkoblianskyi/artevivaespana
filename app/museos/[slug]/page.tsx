@@ -121,7 +121,7 @@ const museosData = {
     `,
     image: "/placeholder.svg?key=0pq26",
     gallery: [
-      "/barcelona-champions-league-display.png",
+      "/barcelona-football-treasures.png",
       "/stadium-tunnel-view.png",
       "/barcelona-jersey-wall.png",
       "/barcelona-football-treasures.png",

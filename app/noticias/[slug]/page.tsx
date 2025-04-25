@@ -10,13 +10,13 @@ import { CalendarToday, AccessTime, Facebook, Twitter, LinkedIn, WhatsApp } from
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-// Datos completos de las noticias
+// Actualizar las fechas y los slugs en noticiasData
 const noticiasData = {
-  "museos-mas-visitados-espana-2023": {
+  "museos-mas-visitados-espana-2025": {
     id: 1,
-    title: "Los 10 museos más visitados de España en 2023",
-    slug: "museos-mas-visitados-espana-2023",
-    date: "15 de enero de 2023",
+    title: "Los 10 museos más visitados de España en 2025",
+    slug: "museos-mas-visitados-espana-2025",
+    date: "15 de enero de 2025",
     author: "María González",
     authorImage: "/author-maria.png",
     readTime: "8 minutos",
@@ -25,40 +25,40 @@ const noticiasData = {
     excerpt:
       "Descubre cuáles son los museos españoles que han recibido más visitantes durante el último año y qué los hace tan especiales.",
     content: `
-      <p>España es un país con una riqueza cultural y artística extraordinaria, lo que se refleja en la gran cantidad y calidad de sus museos. Cada año, millones de visitantes, tanto nacionales como extranjeros, recorren las salas de estas instituciones para admirar sus colecciones y exposiciones. En este artículo, analizamos cuáles han sido los museos más visitados de España durante el año 2023.</p>
+      <p>España es un país con una riqueza cultural y artística extraordinaria, lo que se refleja en la gran cantidad y calidad de sus museos. Cada año, millones de visitantes, tanto nacionales como extranjeros, recorren las salas de estas instituciones para admirar sus colecciones y exposiciones. En este artículo, analizamos cuáles han sido los museos más visitados de España durante el año 2025.</p>
 
       <h3>1. Museo del Prado (Madrid)</h3>
-      <p>El Museo Nacional del Prado se mantiene un año más como el museo más visitado de España, con más de 3,2 millones de visitantes en 2023. La pinacoteca madrileña, que alberga obras maestras de Velázquez, Goya, El Greco, Tiziano y Rubens, entre otros, ha experimentado un incremento del 15% en el número de visitantes respecto al año anterior. Las exposiciones temporales "Picasso: El Greco" y "Velázquez y el Siglo de Oro" han sido dos de los grandes atractivos del año.</p>
+      <p>El Museo Nacional del Prado se mantiene un año más como el museo más visitado de España, con más de 3,2 millones de visitantes en 2025. La pinacoteca madrileña, que alberga obras maestras de Velázquez, Goya, El Greco, Tiziano y Rubens, entre otros, ha experimentado un incremento del 15% en el número de visitantes respecto al año anterior. Las exposiciones temporales "Picasso: El Greco" y "Velázquez y el Siglo de Oro" han sido dos de los grandes atractivos del año.</p>
 
       <h3>2. Museo Reina Sofía (Madrid)</h3>
-      <p>El Museo Nacional Centro de Arte Reina Sofía ha recibido más de 2,8 millones de visitantes en 2023, consolidándose como el segundo museo más visitado del país. El "Guernica" de Picasso sigue siendo el gran reclamo de este museo dedicado al arte contemporáneo, aunque las exposiciones temporales dedicadas a artistas como Louise Bourgeois y Juan Muñoz también han contribuido significativamente a estas cifras.</p>
+      <p>El Museo Nacional Centro de Arte Reina Sofía ha recibido más de 2,8 millones de visitantes en 2025, consolidándose como el segundo museo más visitado del país. El "Guernica" de Picasso sigue siendo el gran reclamo de este museo dedicado al arte contemporáneo, aunque las exposiciones temporales dedicadas a artistas como Louise Bourgeois y Juan Muñoz también han contribuido significativamente a estas cifras.</p>
 
       <h3>3. Museo Guggenheim (Bilbao)</h3>
-      <p>El Museo Guggenheim de Bilbao ha alcanzado la cifra de 1,5 millones de visitantes en 2023, lo que supone un récord histórico para la institución. El edificio diseñado por Frank Gehry sigue siendo un icono arquitectónico que atrae a visitantes de todo el mundo, y exposiciones como "David Hockney: Paisajes" y "Jenny Holzer: Verdades" han sido grandes éxitos de público.</p>
+      <p>El Museo Guggenheim de Bilbao ha alcanzado la cifra de 1,5 millones de visitantes en 2025, lo que supone un récord histórico para la institución. El edificio diseñado por Frank Gehry sigue siendo un icono arquitectónico que atrae a visitantes de todo el mundo, y exposiciones como "David Hockney: Paisajes" y "Jenny Holzer: Verdades" han sido grandes éxitos de público.</p>
 
       <h3>4. Museo Thyssen-Bornemisza (Madrid)</h3>
       <p>Con más de 1,2 millones de visitantes, el Museo Thyssen-Bornemisza ocupa el cuarto lugar en esta lista. La exposición "Mujeres Impresionistas: Mary Cassatt, Berthe Morisot y Eva Gonzalès" ha sido uno de los grandes acontecimientos culturales del año en Madrid, atrayendo a más de 300.000 visitantes.</p>
 
       <h3>5. Museo Picasso (Barcelona)</h3>
-      <p>El Museo Picasso de Barcelona ha recibido más de 1 millón de visitantes en 2023. La colección permanente, que incluye obras de la juventud y formación del artista malagueño, sigue siendo un gran atractivo, pero la exposición temporal "Picasso y la cerámica" ha sido uno de los grandes éxitos del año.</p>
+      <p>El Museo Picasso de Barcelona ha recibido más de 1 millón de visitantes en 2025. La colección permanente, que incluye obras de la juventud y formación del artista malagueño, sigue siendo un gran atractivo, pero la exposición temporal "Picasso y la cerámica" ha sido uno de los grandes éxitos del año.</p>
 
       <h3>6. Ciudad de las Artes y las Ciencias (Valencia)</h3>
-      <p>Aunque no es un museo tradicional, la Ciudad de las Artes y las Ciencias de Valencia, que incluye el Museo de las Ciencias Príncipe Felipe, ha recibido más de 900.000 visitantes en 2023. Este complejo arquitectónico diseñado por Santiago Calatrava sigue siendo uno de los grandes atractivos turísticos de Valencia.</p>
+      <p>Aunque no es un museo tradicional, la Ciudad de las Artes y las Ciencias de Valencia, que incluye el Museo de las Ciencias Príncipe Felipe, ha recibido más de 900.000 visitantes en 2025. Este complejo arquitectónico diseñado por Santiago Calatrava sigue siendo uno de los grandes atractivos turísticos de Valencia.</p>
 
       <h3>7. Teatro-Museo Dalí (Figueres)</h3>
-      <p>El Teatro-Museo Dalí de Figueres ha recibido más de 800.000 visitantes en 2023. Este museo, diseñado por el propio Salvador Dalí, es el mayor objeto surrealista del mundo y alberga una amplia colección de obras del artista catalán.</p>
+      <p>El Teatro-Museo Dalí de Figueres ha recibido más de 800.000 visitantes en 2025. Este museo, diseñado por el propio Salvador Dalí, es el mayor objeto surrealista del mundo y alberga una amplia colección de obras del artista catalán.</p>
 
       <h3>8. Museo del FC Barcelona (Barcelona)</h3>
-      <p>El Museo del FC Barcelona, ubicado en el estadio Camp Nou, ha recibido más de 750.000 visitantes en 2023. Este museo deportivo, que muestra la historia del club y sus numerosos trofeos, es uno de los más visitados de Cataluña.</p>
+      <p>El Museo del FC Barcelona, ubicado en el estadio Camp Nou, ha recibido más de 750.000 visitantes en 2025. Este museo deportivo, que muestra la historia del club y sus numerosos trofeos, es uno de los más visitados de Cataluña.</p>
 
       <h3>9. Museo Nacional de Arte Romano (Mérida)</h3>
-      <p>El Museo Nacional de Arte Romano de Mérida ha recibido más de 600.000 visitantes en 2023. Diseñado por Rafael Moneo, este museo alberga una importante colección de arte y artefactos de la época romana, procedentes principalmente de las excavaciones realizadas en la ciudad de Mérida.</p>
+      <p>El Museo Nacional de Arte Romano de Mérida ha recibido más de 600.000 visitantes en 2025. Diseñado por Rafael Moneo, este museo alberga una importante colección de arte y artefactos de la época romana, procedentes principalmente de las excavaciones realizadas en la ciudad de Mérida.</p>
 
       <h3>10. Museo Sorolla (Madrid)</h3>
-      <p>El Museo Sorolla de Madrid cierra esta lista con más de 500.000 visitantes en 2023. Ubicado en la que fue la casa y taller del pintor Joaquín Sorolla, este museo ha experimentado un notable incremento de visitantes gracias al éxito de la serie "Sorolla" emitida por RTVE.</p>
+      <p>El Museo Sorolla de Madrid cierra esta lista con más de 500.000 visitantes en 2025. Ubicado en la que fue la casa y taller del pintor Joaquín Sorolla, este museo ha experimentado un notable incremento de visitantes gracias al éxito de la serie "Sorolla" emitida por RTVE.</p>
 
       <h3>Conclusión</h3>
-      <p>Los museos españoles han experimentado un notable incremento de visitantes en 2023, superando en muchos casos las cifras previas a la pandemia. Este aumento refleja tanto el interés creciente por el arte y la cultura como la recuperación del turismo internacional. Los museos continúan reinventándose para atraer a nuevos públicos, con exposiciones innovadoras, actividades interactivas y una mayor presencia digital.
+      <p>Los museos españoles han experimentado un notable incremento de visitantes en 2025, superando en muchos casos las cifras previas a la pandemia. Este aumento refleja tanto el interés creciente por el arte y la cultura como la recuperación del turismo internacional. Los museos continúan reinventándose para atraer a nuevos públicos, con exposiciones innovadoras, actividades interactivas y una mayor presencia digital.
       </p>
     `,
     relatedPosts: [2, 4, 7],
@@ -67,7 +67,7 @@ const noticiasData = {
     id: 2,
     title: "Nueva exposición de Picasso en el Museo Reina Sofía",
     slug: "nueva-exposicion-picasso-reina-sofia",
-    date: "3 de febrero de 2023",
+    date: "3 de febrero de 2025",
     author: "Carlos Martínez",
     authorImage: "/author-carlos.png",
     readTime: "6 minutos",
@@ -105,7 +105,7 @@ const noticiasData = {
       <p>También se ha editado un catálogo exhaustivo que incluye ensayos de los comisarios de la exposición, Rosario Peiró y Manuel Fontán del Junco, así como de otros expertos en la obra de Picasso.</p>
 
       <h3>Información práctica</h3>
-      <p>La exposición "Picasso: Los años olvidados" puede visitarse en el Museo Reina Sofía hasta el 15 de junio de 2023. El horario de visita es de lunes a sábado de 10:00 a 21:00 horas, y domingos de 10:00 a 19:00 horas (martes cerrado).</p>
+      <p>La exposición "Picasso: Los años olvidados" puede visitarse en el Museo Reina Sofía hasta el 15 de junio de 2025. El horario de visita es de lunes a sábado de 10:00 a 21:00 horas, y domingos de 10:00 a 19:00 horas (martes cerrado).</p>
 
       <p>El precio de la entrada general es de 12 euros, aunque existen diferentes modalidades de entrada reducida y gratuita. Se recomienda la compra anticipada de entradas a través de la página web del museo para evitar colas.</p>
     `,
@@ -115,7 +115,7 @@ const noticiasData = {
     id: 3,
     title: "El Museo del Prado adquiere una obra inédita de Goya",
     slug: "museo-prado-adquiere-obra-inedita-goya",
-    date: "20 de marzo de 2023",
+    date: "20 de marzo de 2025",
     author: "Laura Sánchez",
     authorImage: "/author-laura.png",
     readTime: "7 minutos",
@@ -144,7 +144,7 @@ const noticiasData = {
       <h3>Restauración y exhibición</h3>
       <p>Antes de su exposición al público, la obra será sometida a un proceso de estudio y documentación en los talleres de restauración del museo. Este proceso incluirá análisis de pigmentos, radiografías y reflectografías infrarrojas que permitirán conocer mejor la técnica empleada por Goya y posibles arrepentimientos o modificaciones durante el proceso creativo.</p>
 
-      <p>Está previsto que "Escena de brujas" se presente al público en septiembre de 2023, como parte de una pequeña exposición temporal que contextualizará la obra dentro de la producción de Goya relacionada con la temática de la brujería y lo sobrenatural. Posteriormente, la pintura se integrará en la colección permanente del museo, en las salas dedicadas al artista aragonés.</p>
+      <p>Está previsto que "Escena de brujas" se presente al público en septiembre de 2025, como parte de una pequeña exposición temporal que contextualizará la obra dentro de la producción de Goya relacionada con la temática de la brujería y lo sobrenatural. Posteriormente, la pintura se integrará en la colección permanente del museo, en las salas dedicadas al artista aragonés.</p>
 
       <h3>Importancia para la colección</h3>
       <p>Con esta adquisición, el Museo del Prado refuerza su posición como la institución que alberga la colección más importante de obras de Francisco de Goya. El museo ya contaba con más de 150 pinturas del artista aragonés, incluyendo obras maestras como "La familia de Carlos IV", "Los fusilamientos del 3 de mayo" o "Las pinturas negras".</p>
@@ -155,6 +155,60 @@ const noticiasData = {
   },
 }
 
+// Actualizar las fechas y los slugs en todasLasNoticias
+const todasLasNoticias = [
+  {
+    id: 1,
+    title: "Los 10 museos más visitados de España en 2025",
+    slug: "museos-mas-visitados-espana-2025",
+    date: "15 de enero de 2025",
+    category: "Ranking",
+    image: "/news-museum-ranking.png",
+    excerpt:
+      "Descubre cuáles son los museos españoles que han recibido más visitantes durante el último año y qué los hace tan especiales.",
+  },
+  {
+    id: 2,
+    title: "Nueva exposición de Picasso en el Museo Reina Sofía",
+    slug: "nueva-exposicion-picasso-reina-sofia",
+    date: "3 de febrero de 2025",
+    category: "Exposiciones",
+    image: "/news-picasso-exhibition.png",
+    excerpt:
+      "El Museo Reina Sofía inaugura una exposición temporal dedicada a la etapa menos conocida de Pablo Picasso, con obras nunca antes expuestas en España.",
+  },
+  {
+    id: 3,
+    title: "El Museo del Prado adquiere una obra inédita de Goya",
+    slug: "museo-prado-adquiere-obra-inedita-goya",
+    date: "20 de marzo de 2025",
+    category: "Adquisiciones",
+    image: "/news-goya-acquisition.png",
+    excerpt:
+      "El Museo del Prado ha anunciado la adquisición de una obra inédita de Francisco de Goya que se encontraba en una colección privada desde el siglo XIX.",
+  },
+  {
+    id: 4,
+    title: "El Museo Thyssen celebra su 30 aniversario con entrada gratuita",
+    slug: "museo-thyssen-celebra-30-aniversario",
+    date: "8 de abril de 2025",
+    category: "Eventos",
+    image: "/news-thyssen-anniversary.png",
+    excerpt:
+      "Con motivo de su 30 aniversario, el Museo Thyssen-Bornemisza ofrecerá entrada gratuita durante todo el mes de octubre y organizará actividades especiales.",
+  },
+  {
+    id: 7,
+    title: "Restauran 'Las Meninas' de Velázquez tras un estudio exhaustivo",
+    slug: "restauran-las-meninas-velazquez",
+    date: "10 de julio de 2025",
+    category: "Restauración",
+    image: "/news-meninas-restoration.png",
+    excerpt:
+      "Tras dos años de estudio, el Museo del Prado ha completado la restauración de 'Las Meninas' de Velázquez, revelando detalles hasta ahora desconocidos.",
+  },
+]
+
 export default function NoticiaDetallePage() {
   const { slug } = useParams()
   const [noticia, setNoticia] = useState<any>(null)
@@ -162,58 +216,6 @@ export default function NoticiaDetallePage() {
   const [noticiasRelacionadas, setNoticiasRelacionadas] = useState<any[]>([])
 
   // Datos de todas las noticias para mostrar relacionadas
-  const todasLasNoticias = [
-    {
-      id: 1,
-      title: "Los 10 museos más visitados de España en 2023",
-      slug: "museos-mas-visitados-espana-2023",
-      date: "15 de enero de 2023",
-      category: "Ranking",
-      image: "/news-museum-ranking.png",
-      excerpt:
-        "Descubre cuáles son los museos españoles que han recibido más visitantes durante el último año y qué los hace tan especiales.",
-    },
-    {
-      id: 2,
-      title: "Nueva exposición de Picasso en el Museo Reina Sofía",
-      slug: "nueva-exposicion-picasso-reina-sofia",
-      date: "3 de febrero de 2023",
-      category: "Exposiciones",
-      image: "/news-picasso-exhibition.png",
-      excerpt:
-        "El Museo Reina Sofía inaugura una exposición temporal dedicada a la etapa menos conocida de Pablo Picasso, con obras nunca antes expuestas en España.",
-    },
-    {
-      id: 3,
-      title: "El Museo del Prado adquiere una obra inédita de Goya",
-      slug: "museo-prado-adquiere-obra-inedita-goya",
-      date: "20 de marzo de 2023",
-      category: "Adquisiciones",
-      image: "/news-goya-acquisition.png",
-      excerpt:
-        "El Museo del Prado ha anunciado la adquisición de una obra inédita de Francisco de Goya que se encontraba en una colección privada desde el siglo XIX.",
-    },
-    {
-      id: 4,
-      title: "El Museo Thyssen celebra su 30 aniversario con entrada gratuita",
-      slug: "museo-thyssen-celebra-30-aniversario",
-      date: "8 de abril de 2023",
-      category: "Eventos",
-      image: "/news-thyssen-anniversary.png",
-      excerpt:
-        "Con motivo de su 30 aniversario, el Museo Thyssen-Bornemisza ofrecerá entrada gratuita durante todo el mes de octubre y organizará actividades especiales.",
-    },
-    {
-      id: 7,
-      title: "Restauran 'Las Meninas' de Velázquez tras un estudio exhaustivo",
-      slug: "restauran-las-meninas-velazquez",
-      date: "10 de julio de 2023",
-      category: "Restauración",
-      image: "/news-meninas-restoration.png",
-      excerpt:
-        "Tras dos años de estudio, el Museo del Prado ha completado la restauración de 'Las Meninas' de Velázquez, revelando detalles hasta ahora desconocidos.",
-    },
-  ]
 
   useEffect(() => {
     // Simulamos una carga de datos
@@ -379,6 +381,44 @@ export default function NoticiaDetallePage() {
                 <Typography variant="h6" sx={{ mb: 2 }}>
                   Compartir este artículo
                 </Typography>
+                <Box sx={{ display: "flex", gap: 2 }}>
+                  <IconButton
+                    sx={{
+                      color: "#1877F2",
+                      bgcolor: "rgba(24, 119, 242, 0.1)",
+                      "&:hover": { bgcolor: "rgba(24, 119, 242, 0.2)" },
+                    }}
+                  >
+                    <Facebook />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      color: "#1DA1F2",
+                      bgcolor: "rgba(29, 161, 242, 0.1)",
+                      "&:hover": { bgcolor: "rgba(29, 161, 242, 0.2)" },
+                    }}
+                  >
+                    <Twitter />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      color: "#0A66C2",
+                      bgcolor: "rgba(10, 102, 194, 0.1)",
+                      "&:hover": { bgcolor: "rgba(10, 102, 194, 0.2)" },
+                    }}
+                  >
+                    <LinkedIn />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      color: "#25D366",
+                      bgcolor: "rgba(37, 211, 102, 0.1)",
+                      "&:hover": { bgcolor: "rgba(37, 211, 102, 0.2)" },
+                    }}
+                  >
+                    <WhatsApp />
+                  </IconButton>
+                </Box>
               </Box>
             </Grid>
 
