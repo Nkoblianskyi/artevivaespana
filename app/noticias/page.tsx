@@ -108,8 +108,6 @@ const categorias = [
   "Adquisiciones",
   "Restauración",
   "Descubrimientos",
-  "Tecnología",
-  "Estadísticas",
 ]
 
 export default function NoticiasPage() {
