@@ -10,7 +10,6 @@ import { CalendarToday, AccessTime, Facebook, Twitter, LinkedIn, WhatsApp } from
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-// Actualizar las fechas y los slugs en noticiasData
 const noticiasData = {
   "museos-mas-visitados-espana-2025": {
     id: 1,
@@ -18,7 +17,7 @@ const noticiasData = {
     slug: "museos-mas-visitados-espana-2025",
     date: "15 de enero de 2025",
     author: "María González",
-    authorImage: "/author-maria.png",
+    authorImage: "/surreal-still-life.png",
     readTime: "8 minutos",
     category: "Ranking",
     image: "/news-museum-ranking.png",
@@ -69,7 +68,7 @@ const noticiasData = {
     slug: "nueva-exposicion-picasso-reina-sofia",
     date: "3 de febrero de 2025",
     author: "Carlos Martínez",
-    authorImage: "/author-carlos.png",
+    authorImage: "/spanish-museum-portrait.png",
     readTime: "6 minutos",
     category: "Exposiciones",
     image: "/news-picasso-exhibition.png",
@@ -117,7 +116,7 @@ const noticiasData = {
     slug: "museo-prado-adquiere-obra-inedita-goya",
     date: "20 de marzo de 2025",
     author: "Laura Sánchez",
-    authorImage: "/author-laura.png",
+    authorImage: "/el-greco-museum-display.png",
     readTime: "7 minutos",
     category: "Adquisiciones",
     image: "/news-goya-acquisition.png",
@@ -155,7 +154,6 @@ const noticiasData = {
   },
 }
 
-// Actualizar las fechas y los slugs en todasLasNoticias
 const todasLasNoticias = [
   {
     id: 1,
@@ -193,7 +191,7 @@ const todasLasNoticias = [
     slug: "museo-thyssen-celebra-30-aniversario",
     date: "8 de abril de 2025",
     category: "Eventos",
-    image: "/news-thyssen-anniversary.png",
+    image: "/abstract-shapes-museum.png",
     excerpt:
       "Con motivo de su 30 aniversario, el Museo Thyssen-Bornemisza ofrecerá entrada gratuita durante todo el mes de octubre y organizará actividades especiales.",
   },
@@ -203,7 +201,7 @@ const todasLasNoticias = [
     slug: "restauran-las-meninas-velazquez",
     date: "10 de julio de 2025",
     category: "Restauración",
-    image: "/news-meninas-restoration.png",
+    image: "/sorolla-museum-hall.png",
     excerpt:
       "Tras dos años de estudio, el Museo del Prado ha completado la restauración de 'Las Meninas' de Velázquez, revelando detalles hasta ahora desconocidos.",
   },

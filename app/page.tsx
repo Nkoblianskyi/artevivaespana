@@ -24,7 +24,7 @@ export default function Home() {
     {
       id: 3,
       name: "Museo del Fútbol Club Barcelona",
-      image: "/placeholder.svg?key=dtgsc",
+      image: "/barcelona-museum.png",
       description: "Historia y trofeos del club más laureado de España",
       link: "/museos/fcb",
     },

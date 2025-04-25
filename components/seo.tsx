@@ -14,7 +14,7 @@ interface SEOProps {
 export default function SEO({
   title = "ArteViva - Museos de España",
   description = "Descubre los mejores museos de España con ArteViva. Arte, cultura, historia y deporte en un solo lugar.",
-  image = "/og-image.jpg",
+  image = "/vintage-bullfight-poster.png",
   type = "website",
   date,
 }: SEOProps) {

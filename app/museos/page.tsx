@@ -64,7 +64,7 @@ export default function MuseosPage() {
     {
       id: 7,
       name: "Museo Thyssen-Bornemisza",
-      image: "/placeholder.svg?height=400&width=600&query=Museo Thyssen, Madrid",
+      image: "/bornemisza.png",
       description: "Una de las colecciones de arte privadas más importantes del mundo, ahora de propiedad pública.",
       category: "Arte",
       location: "Madrid",
@@ -73,7 +73,7 @@ export default function MuseosPage() {
     {
       id: 8,
       name: "Museo Guggenheim",
-      image: "/placeholder.svg?height=400&width=600&query=Museo Guggenheim, Bilbao",
+      image: "/gugenheim.png",
       description: "Icono arquitectónico que alberga importantes exposiciones de arte contemporáneo.",
       category: "Arte Contemporáneo",
       location: "Bilbao",
@@ -101,7 +101,7 @@ export default function MuseosPage() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              'url("/placeholder.svg?height=800&width=1600&query=Spanish museums collection, dark elegant")',
+              'url("/spanish-museum.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",

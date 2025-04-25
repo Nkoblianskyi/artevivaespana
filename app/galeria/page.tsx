@@ -42,7 +42,7 @@ const galleryData = [
   },
   {
     id: 4,
-    src: "/passionate-flamenco.png",
+    src: "/flamenco.png",
     alt: "Bailaora de Flamenco",
     category: "Cultura",
     museum: "Museo del Baile Flamenco",
@@ -106,7 +106,7 @@ const galleryData = [
   },
   {
     id: 12,
-    src: "/roman-bust-museum.png",
+    src: "public/roman-bust-museum.png",
     alt: "Estatua romana de Augusto",
     category: "Historia",
     museum: "Museo Nacional de Arte Romano",
@@ -122,7 +122,7 @@ const galleryData = [
   },
   {
     id: 14,
-    src: "/flamenco-dress-display.png",
+    src: "/flamenco-2.png",
     alt: "Trajes de flamenca",
     category: "Cultura",
     museum: "Museo del Baile Flamenco",
@@ -130,7 +130,7 @@ const galleryData = [
   },
   {
     id: 15,
-    src: "/thyssen-impressionist-garden.png",
+    src: "/thu.jpg",
     alt: "Mujer con sombrilla",
     category: "Arte",
     museum: "Museo Thyssen-Bornemisza",
@@ -159,7 +159,7 @@ const getCarouselItems = () => {
       link: "/galeria",
     },
     {
-      image: "/passionate-flamenco.png",
+      image: "/flamenco-2.png",
       title: "Arte del Flamenco",
       description: "Representación del arte del flamenco, declarado Patrimonio Cultural Inmaterial de la Humanidad.",
       link: "/galeria",

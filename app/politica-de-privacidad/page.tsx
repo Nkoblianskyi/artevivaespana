@@ -24,7 +24,7 @@ export default function PoliticaPrivacidadPage() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              'url("/placeholder.svg?height=600&width=1200&query=privacy policy document, dark elegant")',
+              'url("/vintage-bullfight-poster.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",

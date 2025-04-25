@@ -20,7 +20,6 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import GalleryCarousel from "@/components/gallery-carousel"
 
-// Datos de ejemplo para los museos
 const museosData = {
   prado: {
     name: "Museo del Prado",
@@ -52,26 +51,26 @@ const museosData = {
     `,
     image: "/prado-facade-autumn.png",
     gallery: [
-      "/royal-studio-scene.png",
-      "/placeholder.svg?key=b47ki",
-      "/placeholder.svg?key=a0xw3",
+      "/prado-facade.png",
+      "/Prado-Museum-Artifact.png",
+      "/prado.png",
       "/prado-gallery-view.png",
     ],
     carouselItems: [
       {
-        image: "/royal-studio-scene.png",
+        image: "/prado-facade.png",
         title: "Las Meninas de Velázquez",
         description: "Una de las obras maestras más importantes de la historia del arte occidental, pintada en 1656.",
         link: "/museos/prado",
       },
       {
-        image: "/placeholder.svg?key=xvhm7",
+        image: "/prado-2.png",
         title: "El Jardín de las Delicias de El Bosco",
         description: "Tríptico fascinante que representa el paraíso, el mundo terrenal y el infierno.",
         link: "/museos/prado",
       },
       {
-        image: "/placeholder.svg?key=jwew1",
+        image: "/Prado-Museum-Artifact.png",
         title: "Los fusilamientos del 3 de mayo de Goya",
         description: "Obra que representa la resistencia española contra las tropas napoleónicas.",
         link: "/museos/prado",
@@ -119,7 +118,7 @@ const museosData = {
       
       <p><strong>Objetos Históricos:</strong> Diversos objetos que narran la historia del club, como el acta fundacional, documentos históricos, banderas, balones utilizados en partidos importantes, botas de jugadores legendarios, etc.</p>
     `,
-    image: "/placeholder.svg?key=0pq26",
+    image: "/barcelona-museum.png",
     gallery: [
       "/barcelona-football-treasures.png",
       "/stadium-tunnel-view.png",
@@ -265,28 +264,27 @@ const museosData = {
       
       <p><strong>Instalaciones Interactivas:</strong> El museo cuenta con diversas instalaciones interactivas que permiten a los visitantes experimentar de primera mano algunos aspectos del flamenco, como el compás, el zapateado o los diferentes palos.</p>
     `,
-    image: "/placeholder.svg?height=800&width=1200&query=Flamenco Dance Museum, Seville",
+    image: "/flamenco-passion.png",
     gallery: [
-      "/placeholder.svg?height=600&width=800&query=Flamenco dancers performance",
-      "/placeholder.svg?height=600&width=800&query=Traditional flamenco dresses exhibition",
-      "/placeholder.svg?height=600&width=800&query=Flamenco guitars display",
-      "/placeholder.svg?height=600&width=800&query=Interactive flamenco history exhibit",
+      "/flamenco-essence.png",
+      "/flamenco-2.png",
+      "/flamenco-guitar-dosplay.png",
     ],
     carouselItems: [
       {
-        image: "/placeholder.svg?height=600&width=800&query=Flamenco dancers performance",
+        image: "/flamenco-essence.png",
         title: "Espectáculos de Flamenco",
         description: "Actuaciones diarias de bailaores, cantaores y guitarristas profesionales en el tablao del museo.",
         link: "/museos/flamenco",
       },
       {
-        image: "/placeholder.svg?height=600&width=800&query=Traditional flamenco dresses exhibition",
+        image: "/flamenco-2.png",
         title: "Colección de Trajes",
         description: "Exposición de trajes tradicionales de flamenca y vestuario utilizado por artistas reconocidos.",
         link: "/museos/flamenco",
       },
       {
-        image: "/placeholder.svg?height=600&width=800&query=Interactive flamenco history exhibit",
+        image: "/flamenco-dress-display(1).png",
         title: "Historia Interactiva del Flamenco",
         description: "Recorrido multimedia por la evolución del flamenco desde sus orígenes hasta la actualidad.",
         link: "/museos/flamenco",
@@ -338,30 +336,23 @@ const museosData = {
       
       <p><strong>Documentos Históricos:</strong> Un archivo documental que incluye contratos, reglamentos, entradas y otros documentos que ilustran la evolución administrativa y organizativa de los espectáculos taurinos.</p>
     `,
-    image: "/placeholder.svg?height=800&width=1200&query=Bullfighting Museum, Madrid",
+    image: "/museum-madrid.png",
     gallery: [
-      "/placeholder.svg?height=600&width=800&query=Historic bullfighting posters",
-      "/placeholder.svg?height=600&width=800&query=Matador costumes display",
-      "/placeholder.svg?height=600&width=800&query=Bullfighting artifacts collection",
-      "/placeholder.svg?height=600&width=800&query=Las Ventas bullring, Madrid",
+      "/museum-madrid-gallery.png",
+      "/artifacts.png",
+      "/trajes.jpg",
     ],
     carouselItems: [
       {
-        image: "/placeholder.svg?height=600&width=800&query=Historic bullfighting posters",
+        image: "/artifacts.png",
         title: "Carteles Históricos",
         description: "Colección de carteles taurinos desde el siglo XVIII hasta la actualidad.",
         link: "/museos/taurino",
       },
       {
-        image: "/placeholder.svg?height=600&width=800&query=Matador costumes display",
+        image: "/trajes.jpg",
         title: "Trajes de Luces",
         description: "Exposición de trajes utilizados por grandes figuras del toreo como Manolete y El Cordobés.",
-        link: "/museos/taurino",
-      },
-      {
-        image: "/placeholder.svg?height=600&width=800&query=Las Ventas bullring, Madrid",
-        title: "Plaza de Toros de Las Ventas",
-        description: "Visita a la plaza de toros más importante del mundo, inaugurada en 1931.",
         link: "/museos/taurino",
       },
     ],
@@ -415,29 +406,27 @@ const museosData = {
       
       <p><strong>Arte Contemporáneo:</strong> Incluye obras de movimientos como el Expresionismo Abstracto, el Pop Art y el Hiperrealismo, con artistas como Jackson Pollock, Roy Lichtenstein y Edward Hopper.</p>
     `,
-    image: "/placeholder.svg?height=800&width=1200&query=Thyssen Museum, Madrid, facade",
+    image: "/thu.jpg",
     gallery: [
-      "/placeholder.svg?height=600&width=800&query=Thyssen Museum interior gallery",
-      "/placeholder.svg?height=600&width=800&query=Impressionist paintings, Thyssen Museum",
-      "/placeholder.svg?height=600&width=800&query=American art collection, Thyssen Museum",
-      "/placeholder.svg?height=600&width=800&query=Modern art section, Thyssen Museum",
+      "/sorolla-museum-hall.png",
+      "/roman-bust-museum.png",
     ],
     carouselItems: [
       {
-        image: "/placeholder.svg?height=600&width=800&query=Impressionist paintings, Thyssen Museum",
+        image: "/flamenco-2.png",
         title: "Colección Impresionista",
         description:
           "Una de las mejores colecciones de pintura impresionista fuera de Francia, con obras de Monet, Renoir y Degas.",
         link: "/museos/thyssen",
       },
       {
-        image: "/placeholder.svg?height=600&width=800&query=American art collection, Thyssen Museum",
+        image: "/thyssen-impressionist-garden.png",
         title: "Arte Norteamericano",
         description: "Una singular colección de pintura norteamericana del siglo XIX, única en Europa.",
         link: "/museos/thyssen",
       },
       {
-        image: "/placeholder.svg?height=600&width=800&query=Modern art section, Thyssen Museum",
+        image: "/nadal-olympic-triumph.png",
         title: "Vanguardias del Siglo XX",
         description:
           "Obras maestras de los principales movimientos artísticos del siglo XX, desde el Expresionismo hasta el Pop Art.",
@@ -464,8 +453,9 @@ const museosData = {
   // Añadir más museos según sea necesario
 }
 
-export default function MuseoPage({ params }: { params: { slug: string } }) {
-  const museo = museosData[params.slug as keyof typeof museosData]
+export default function MuseoPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const museo = museosData[slug as keyof typeof museosData]
 
   if (!museo) {
     notFound()
@@ -485,10 +475,8 @@ export default function MuseoPage({ params }: { params: { slug: string } }) {
       addressRegion: "España",
     },
     openingHours: museo.schedule,
-    // No se incluye información de precios
     telephone: "+34 915 135 516",
     url: `https://artevivaespana.com/museos/${params.slug}`,
-    sameAs: ["https://www.facebook.com/artevivaespana", "https://www.instagram.com/artevivaespana"],
   }
 
   return (

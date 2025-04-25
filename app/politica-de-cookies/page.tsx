@@ -24,7 +24,7 @@ export default function PoliticaCookiesPage() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              'url("/placeholder.svg?height=600&width=1200&query=cookies policy document, dark elegant")',
+              'url("/surreal-still-life.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",

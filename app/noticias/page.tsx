@@ -60,7 +60,7 @@ const noticias = [
     slug: "descubren-pinturas-rupestres-cueva-cantabria",
     date: "12 de mayo de 2025",
     category: "Descubrimientos",
-    image: "/news-cave-paintings.png",
+    image: "/el-greco-museum-display.png",
     excerpt:
       "Un grupo de arqueólogos ha descubierto un conjunto de pinturas rupestres de más de 15.000 años de antigüedad en una cueva de Cantabria.",
     featured: false,
@@ -71,7 +71,7 @@ const noticias = [
     slug: "guggenheim-bilbao-programacion-2026",
     date: "25 de junio de 2025",
     category: "Programación",
-    image: "/news-guggenheim-program.png",
+    image: "/bstract-forms-reina-sofia.png",
     excerpt:
       "El Museo Guggenheim de Bilbao ha presentado su programación de exposiciones para el año 2026, con grandes nombres del arte contemporáneo.",
     featured: false,
@@ -82,7 +82,7 @@ const noticias = [
     slug: "restauran-las-meninas-velazquez",
     date: "10 de julio de 2025",
     category: "Restauración",
-    image: "/news-meninas-restoration.png",
+    image: "/Prado-Museum-Artifact.png",
     excerpt:
       "Tras dos años de estudio, el Museo del Prado ha completado la restauración de 'Las Meninas' de Velázquez, revelando detalles hasta ahora desconocidos.",
     featured: false,
@@ -93,53 +93,9 @@ const noticias = [
     slug: "museo-arqueologico-renueva-salas-prehistoria",
     date: "5 de agosto de 2025",
     category: "Renovaciones",
-    image: "/news-archaeological-museum.png",
+    image: "/tennis-trophy-display.png",
     excerpt:
       "El Museo Arqueológico Nacional ha renovado completamente sus salas dedicadas a la prehistoria, incorporando nuevas tecnologías y piezas nunca expuestas.",
-    featured: false,
-  },
-  {
-    id: 9,
-    title: "Récord de visitantes en los museos españoles durante el verano",
-    slug: "record-visitantes-museos-espanoles-verano",
-    date: "18 de septiembre de 2025",
-    category: "Estadísticas",
-    image: "/news-museum-visitors.png",
-    excerpt:
-      "Los museos españoles han registrado un récord histórico de visitantes durante los meses de julio y agosto, superando las cifras previas a la pandemia.",
-    featured: false,
-  },
-  {
-    id: 10,
-    title: "Nueva app para recorrer el Triángulo del Arte de Madrid",
-    slug: "nueva-app-triangulo-arte-madrid",
-    date: "22 de octubre de 2025",
-    category: "Tecnología",
-    image: "/news-art-triangle-app.png",
-    excerpt:
-      "Una nueva aplicación móvil permite recorrer el Triángulo del Arte de Madrid (Prado, Reina Sofía y Thyssen) con guías virtuales y contenido exclusivo.",
-    featured: false,
-  },
-  {
-    id: 11,
-    title: "El Museo Sorolla reabre sus puertas tras dos años de reformas",
-    slug: "museo-sorolla-reabre-tras-reformas",
-    date: "14 de noviembre de 2025",
-    category: "Reaperturas",
-    image: "/news-sorolla-reopening.png",
-    excerpt:
-      "Después de dos años cerrado por reformas, el Museo Sorolla de Madrid reabre sus puertas con nuevas salas y una museografía renovada.",
-    featured: false,
-  },
-  {
-    id: 12,
-    title: "Exposición sobre el flamenco recorre los principales museos andaluces",
-    slug: "exposicion-flamenco-museos-andaluces",
-    date: "3 de diciembre de 2025",
-    category: "Exposiciones",
-    image: "/news-flamenco-exhibition.png",
-    excerpt:
-      "Una exposición itinerante sobre la historia y evolución del flamenco recorrerá los principales museos de Andalucía durante 2026.",
     featured: false,
   },
 ]
@@ -209,7 +165,7 @@ export default function NoticiasPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: 'url("/news-hero-background.png")',
+            backgroundImage: 'url("/abstract-shapes-museum.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",
