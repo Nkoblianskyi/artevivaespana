@@ -1,17 +1,19 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Container, Typography, Box, Button, Breadcrumbs, Tabs, Tab, CircularProgress } from "@mui/material"
-import Grid from "@mui/material/Grid"
-import { ArrowForward } from "@mui/icons-material"
+import { ArrowRight } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import ImageModal from "@/components/image-modal"
 import GalleryCarousel from "@/components/gallery-carousel"
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Badge } from "@/components/ui/badge"
 
 // Datos de las imágenes de la galería
 const galleryData = [
@@ -42,7 +44,7 @@ const galleryData = [
   },
   {
     id: 4,
-    src: "/flamenco.png",
+    src: "/flamenco-2.png",
     alt: "Bailaora de Flamenco",
     category: "Cultura",
     museum: "Museo del Baile Flamenco",
@@ -106,7 +108,7 @@ const galleryData = [
   },
   {
     id: 12,
-    src: "public/roman-bust-museum.png",
+    src: "/roman-bust-museum.png",
     alt: "Estatua romana de Augusto",
     category: "Historia",
     museum: "Museo Nacional de Arte Romano",
@@ -175,392 +177,161 @@ const getCarouselItems = () => {
 
 export default function GaleriaPage() {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
-  const [filteredImages, setFilteredImages] = useState<typeof galleryData>([])
+  const [filteredImages, setFilteredImages] = useState(galleryData)
   const [modalOpen, setModalOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(false)
 
-  // Efecto para filtrar las imágenes por categoría
   useEffect(() => {
     setLoading(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (selectedCategory === "Todos") {
-        // Para cada categoría, mostrar solo 2 imágenes
         const limitedImages: typeof galleryData = []
-        const categories = ["Arte", "Deporte", "Historia", "Cultura"]
-
-        categories.forEach((category) => {
-          const categoryImages = galleryData.filter((item) => item.category === category).slice(0, 2)
-          limitedImages.push(...categoryImages)
+        categorias.slice(1).forEach((cat) => {
+          const imgs = galleryData.filter((item) => item.category === cat).slice(0, 2)
+          limitedImages.push(...imgs)
         })
-
         setFilteredImages(limitedImages)
       } else {
-        // Para la categoría seleccionada, mostrar solo 2 imágenes
-        const categoryImages = galleryData.filter((item) => item.category === selectedCategory).slice(0, 2)
-        setFilteredImages(categoryImages)
+        setFilteredImages(galleryData.filter((item) => item.category === selectedCategory).slice(0, 2))
       }
       setLoading(false)
-    }, 500)
-  }, [selectedCategory])
+    }, 400)
 
-  const handleCategoryChange = (_event: React.SyntheticEvent, newValue: string) => {
-    setSelectedCategory(newValue)
-  }
+    return () => clearTimeout(timer)
+  }, [selectedCategory])
 
   const handleImageClick = (index: number) => {
     setCurrentImageIndex(index)
     setModalOpen(true)
   }
 
-  const handleViewAllCategory = (category: string) => {
-    // Aquí podrías implementar la lógica para ver todas las imágenes de una categoría
-    console.log(`Ver todas las imágenes de la categoría: ${category}`)
-  }
-
   return (
-    <main>
+    <main className="min-h-screen bg-black text-white">
       <Header />
 
       {/* Hero Section */}
-      <Box
-        sx={{
-          height: "50vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: 'url("/museo-madrid-gallery.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+      <div className="relative h-[50vh] flex items-center justify-center">
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url("/museum-madrid.png")',
             filter: "brightness(0.4)",
-            zIndex: -1,
-          },
-        }}
-      >
-        <Container maxWidth="md" sx={{ textAlign: "center", zIndex: 1 }}>
-          <Typography
-            variant="h1"
-            component="h1"
-            sx={{
-              fontSize: { xs: "2rem", md: "3.5rem" },
-              fontWeight: 700,
-              mb: 2,
-            }}
-          >
-            Galería
-          </Typography>
-
-          <Box sx={{ width: "100px", height: "2px", bgcolor: "#d4af37", mx: "auto", my: 3 }} />
-
-          <Typography
-            variant="h5"
-            component="p"
-            sx={{
-              mb: 4,
-              maxWidth: "800px",
-              mx: "auto",
-            }}
-          >
+          }}
+        />
+        <div className="container mx-auto text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Galería</h1>
+          <div className="w-24 h-0.5 bg-[#d4af37] mx-auto my-6"></div>
+          <p className="text-xl max-w-2xl mx-auto">
             Explora nuestra colección de imágenes de los mejores museos de España
-          </Typography>
-        </Container>
-      </Box>
+          </p>
+        </div>
+      </div>
 
       {/* Breadcrumbs */}
-      <Box sx={{ bgcolor: "#1a1a1a", py: 2 }}>
-        <Container maxWidth="lg">
-          <Breadcrumbs aria-label="breadcrumb" sx={{ color: "rgba(255,255,255,0.7)" }}>
-            <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
+      <div className="bg-[#1a1a1a] py-2">
+        <div className="container mx-auto">
+          <nav className="text-sm text-gray-400">
+            <Link href="/" className="hover:text-white transition-colors">
               Inicio
             </Link>
-            <Typography color="white">Galería</Typography>
-          </Breadcrumbs>
-        </Container>
-      </Box>
+            <span className="mx-2">/</span>
+            <span className="text-white">Galería</span>
+          </nav>
+        </div>
+      </div>
 
-      {/* Carrusel destacado */}
-      <Box sx={{ py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography
-            variant="h3"
-            component="h2"
-            sx={{
-              mb: 4,
-              fontSize: { xs: "1.75rem", md: "2.5rem" },
-              textAlign: "center",
-            }}
-          >
-            Obras Destacadas
-          </Typography>
-
-          <Box sx={{ width: "100px", height: "2px", bgcolor: "#d4af37", mx: "auto", mb: 6 }} />
-
+      {/* Obras Destacadas */}
+      <section className="py-16">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Obras Destacadas</h2>
+          <div className="w-24 h-0.5 bg-[#d4af37] mx-auto mb-12"></div>
           <GalleryCarousel items={getCarouselItems()} />
-        </Container>
-      </Box>
+        </div>
+      </section>
 
-      {/* Categorías y Galería */}
-      <Box sx={{ py: 8, bgcolor: "#1a1a1a" }}>
-        <Container maxWidth="lg">
-          <Box sx={{ mb: 6, display: "flex", justifyContent: "center" }}>
-            <Tabs
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-              sx={{
-                ".MuiTabs-indicator": {
-                  backgroundColor: "#d4af37",
-                },
-                ".MuiTab-root": {
-                  color: "rgba(255,255,255,0.7)",
-                  "&.Mui-selected": {
-                    color: "#d4af37",
-                  },
-                },
-              }}
-            >
-              {categorias.map((categoria) => (
-                <Tab key={categoria} label={categoria} value={categoria} />
-              ))}
-            </Tabs>
-          </Box>
+      {/* Gallery Section */}
+      <section className="py-16 bg-[#1a1a1a]">
+        <div className="container mx-auto">
+          <Tabs defaultValue="Todos" value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+            <div className="flex justify-center mb-12">
+              <TabsList className="bg-[#111] border border-gray-800">
+                {categorias.map((categoria) => (
+                  <TabsTrigger
+                    key={categoria}
+                    value={categoria}
+                    className="data-[state=active]:bg-transparent data-[state=active]:text-[#d4af37] data-[state=active]:border-b-2 data-[state=active]:border-[#d4af37] rounded-none px-6"
+                  >
+                    {categoria}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
-          {loading ? (
-            <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
-              <CircularProgress sx={{ color: "#d4af37" }} />
-            </Box>
-          ) : filteredImages.length === 0 ? (
-            <Box sx={{ textAlign: "center", py: 8 }}>
-              <Typography variant="h5" sx={{ mb: 2 }}>
-                No se encontraron imágenes en esta categoría
-              </Typography>
-              <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.7)" }}>
-                Por favor, selecciona otra categoría o vuelve a "Todos"
-              </Typography>
-            </Box>
-          ) : (
-            <>
-              {/* Mostrar imágenes por categoría */}
-              {selectedCategory === "Todos" ? (
-                // Mostrar todas las categorías con máximo 2 imágenes por categoría
-                categorias
-                  .slice(1)
-                  .map((categoria) => {
-                    const categoryImages = filteredImages.filter((item) => item.category === categoria)
-                    if (categoryImages.length === 0) return null
-
-                    return (
-                      <Box key={categoria} sx={{ mb: 8 }}>
-                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
-                          <Typography variant="h4" component="h3">
-                            {categoria}
-                          </Typography>
-                          <Button
-                            onClick={() => handleViewAllCategory(categoria)}
-                            sx={{
-                              color: "#d4af37",
-                              "&:hover": {
-                                backgroundColor: "transparent",
-                                textDecoration: "underline",
-                              },
-                              display: "flex",
-                              alignItems: "center",
-                            }}
-                          >
-                            Ver todo <ArrowForward sx={{ ml: 0.5, fontSize: "1rem" }} />
-                          </Button>
-                        </Box>
-
-                        <Grid container spacing={3}>
-                          {categoryImages.map((item, index) => (
-                            <Grid item xs={12} sm={6} md={6} key={item.id}>
-                              <Box
-                                sx={{
-                                  position: "relative",
-                                  paddingTop: "75%",
-                                  borderRadius: "4px",
-                                  overflow: "hidden",
-                                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                                  cursor: "pointer",
-                                  "&:hover": {
-                                    transform: "scale(1.03)",
-                                    boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                                    "& .overlay": {
-                                      opacity: 1,
-                                    },
-                                  },
-                                }}
-                                onClick={() => handleImageClick(filteredImages.indexOf(item))}
-                              >
-                                <Image
-                                  src={item.src || "/placeholder.svg"}
-                                  alt={item.alt}
-                                  fill
-                                  style={{ objectFit: "cover" }}
-                                  sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
-                                />
-                                <Box
-                                  className="overlay"
-                                  sx={{
-                                    position: "absolute",
-                                    top: 0,
-                                    left: 0,
-                                    width: "100%",
-                                    height: "100%",
-                                    backgroundColor: "rgba(0,0,0,0.7)",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    opacity: 0,
-                                    transition: "opacity 0.3s ease",
-                                    padding: 2,
-                                  }}
-                                >
-                                  <Typography
-                                    variant="subtitle1"
-                                    sx={{ color: "white", textAlign: "center", fontWeight: "bold" }}
-                                  >
-                                    {item.alt}
-                                  </Typography>
-                                  <Typography variant="body2" sx={{ color: "#d4af37", textAlign: "center", mt: 1 }}>
-                                    {item.museum}
-                                  </Typography>
-                                  <Button
-                                    sx={{
-                                      color: "white",
-                                      borderColor: "white",
-                                      borderWidth: 1,
-                                      borderStyle: "solid",
-                                      mt: 2,
-                                      "&:hover": {
-                                        borderColor: "#d4af37",
-                                        color: "#d4af37",
-                                      },
-                                    }}
-                                    size="small"
-                                  >
-                                    Ver Detalle
-                                  </Button>
-                                </Box>
-                              </Box>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    )
-                  })
-              ) : (
-                // Mostrar solo la categoría seleccionada
-                <Box>
-                  <Grid container spacing={3}>
-                    {filteredImages.map((item, index) => (
-                      <Grid item xs={12} sm={6} md={6} key={item.id}>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            paddingTop: "75%",
-                            borderRadius: "4px",
-                            overflow: "hidden",
-                            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                            cursor: "pointer",
-                            "&:hover": {
-                              transform: "scale(1.03)",
-                              boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                              "& .overlay": {
-                                opacity: 1,
-                              },
-                            },
-                          }}
-                          onClick={() => handleImageClick(index)}
-                        >
+            {categorias.map((categoria) => (
+              <TabsContent key={categoria} value={categoria} className="mt-0">
+                {loading ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {[1, 2].map((i) => (
+                      <div key={i} className="space-y-3">
+                        <Skeleton className="h-[300px] w-full bg-gray-800" />
+                        <Skeleton className="h-4 w-3/4 bg-gray-800" />
+                        <Skeleton className="h-4 w-1/2 bg-gray-800" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {filteredImages.map((image, index) => (
+                      <Card
+                        key={image.id}
+                        className="bg-[#111] border-gray-800 overflow-hidden group cursor-pointer"
+                        onClick={() => handleImageClick(index)}
+                      >
+                        <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
-                            src={item.src || "/placeholder.svg"}
-                            alt={item.alt}
+                            src={image.src || "/placeholder.svg"}
+                            alt={image.alt}
                             fill
-                            style={{ objectFit: "cover" }}
-                            sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority={index < 4}
                           />
-                          <Box
-                            className="overlay"
-                            sx={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
-                              width: "100%",
-                              height: "100%",
-                              backgroundColor: "rgba(0,0,0,0.7)",
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              opacity: 0,
-                              transition: "opacity 0.3s ease",
-                              padding: 2,
-                            }}
-                          >
-                            <Typography
-                              variant="subtitle1"
-                              sx={{ color: "white", textAlign: "center", fontWeight: "bold" }}
-                            >
-                              {item.alt}
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: "#d4af37", textAlign: "center", mt: 1 }}>
-                              {item.museum}
-                            </Typography>
+                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+                            <h3 className="text-xl font-bold mb-2">{image.alt}</h3>
+                            <Badge className="bg-[#d4af37] text-black hover:bg-[#c49f32] mb-4">{image.museum}</Badge>
+                            <p className="text-sm text-gray-300 mb-4 line-clamp-3">{image.description}</p>
                             <Button
-                              sx={{
-                                color: "white",
-                                borderColor: "white",
-                                borderWidth: 1,
-                                borderStyle: "solid",
-                                mt: 2,
-                                "&:hover": {
-                                  borderColor: "#d4af37",
-                                  color: "#d4af37",
-                                },
-                              }}
-                              size="small"
+                              variant="outline"
+                              size="sm"
+                              className="border-white text-white hover:bg-white/20 hover:text-white"
                             >
                               Ver Detalle
                             </Button>
-                          </Box>
-                        </Box>
-                      </Grid>
+                          </div>
+                        </div>
+                        <CardContent className="p-4">
+                          <h3 className="font-semibold truncate">{image.alt}</h3>
+                          <p className="text-sm text-[#d4af37]">{image.museum}</p>
+                        </CardContent>
+                      </Card>
                     ))}
-                  </Grid>
+                  </div>
+                )}
 
-                  <Box sx={{ display: "flex", justifyContent: "center", mt: 6 }}>
-                    <Button
-                      variant="outlined"
-                      onClick={() => handleViewAllCategory(selectedCategory)}
-                      sx={{
-                        borderColor: "#d4af37",
-                        color: "#d4af37",
-                        px: 4,
-                        py: 1.5,
-                        "&:hover": {
-                          borderColor: "#d4af37",
-                          backgroundColor: "rgba(212, 175, 55, 0.1)",
-                        },
-                      }}
-                    >
-                      Ver Todas las Imágenes de {selectedCategory}
+                {selectedCategory !== "Todos" && !loading && (
+                  <div className="flex justify-center mt-12">
+                    <Button variant="outline" className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10">
+                      Ver más obras de {selectedCategory}
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </Box>
-                </Box>
-              )}
-            </>
-          )}
-        </Container>
-      </Box>
+                  </div>
+                )}
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
+      </section>
 
       {/* Modal para ver imágenes */}
       <ImageModal

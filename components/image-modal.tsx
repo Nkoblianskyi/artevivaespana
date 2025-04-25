@@ -1,11 +1,11 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
-import { Box, Modal, IconButton, Typography } from "@mui/material"
-import { Close, ArrowBackIos, ArrowForwardIos } from "@mui/icons-material"
 import Image from "next/image"
+import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 
 interface ImageModalProps {
   open: boolean
@@ -26,13 +26,11 @@ export default function ImageModal({ open, onClose, images, currentIndex }: Imag
     setIndex(currentIndex)
   }, [currentIndex])
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation()
+  const handlePrev = () => {
     setIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1))
   }
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation()
+  const handleNext = () => {
     setIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
   }
 
@@ -41,123 +39,62 @@ export default function ImageModal({ open, onClose, images, currentIndex }: Imag
   const currentImage = images[index]
 
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="modal-image-title"
-      aria-describedby="modal-image-description"
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        sx={{
-          position: "relative",
-          width: "90%",
-          height: "90%",
-          maxWidth: "1200px",
-          bgcolor: "rgba(0, 0, 0, 0.9)",
-          borderRadius: "8px",
-          outline: "none",
-          p: 2,
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <IconButton
+    <Dialog open={open} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="max-w-5xl w-[90vw] h-[80vh] p-0 bg-black/95 border-gray-800">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-4 top-4 text-white hover:bg-white/20 z-50"
           onClick={onClose}
-          sx={{
-            position: "absolute",
-            top: 10,
-            right: 10,
-            color: "white",
-            zIndex: 10,
-          }}
         >
-          <Close />
-        </IconButton>
+          <X className="h-5 w-5" />
+          <span className="sr-only">Cerrar</span>
+        </Button>
 
-        <Box
-          sx={{
-            position: "relative",
-            width: "100%",
-            height: "calc(100% - 80px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+        <div className="relative h-[calc(100%-100px)] w-full flex items-center justify-center">
+          <div className="relative w-full h-full flex items-center justify-center">
             <Image
-              src={currentImage.src || "/placeholder.svg"}
-              alt={currentImage.alt}
+              src={currentImage?.src || "/placeholder.svg"}
+              alt={currentImage?.alt || ""}
               fill
-              style={{ objectFit: "contain" }}
+              className="object-contain"
               sizes="(max-width: 1200px) 90vw, 1200px"
               priority
             />
-          </Box>
+          </div>
 
-          <IconButton
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute left-4 rounded-full bg-black/50 hover:bg-black/70 text-white"
             onClick={handlePrev}
-            sx={{
-              position: "absolute",
-              left: { xs: 10, md: 20 },
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.3)",
-              "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.5)",
-              },
-            }}
           >
-            <ArrowBackIos />
-          </IconButton>
+            <ChevronLeft className="h-6 w-6" />
+            <span className="sr-only">Anterior</span>
+          </Button>
 
-          <IconButton
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-4 rounded-full bg-black/50 hover:bg-black/70 text-white"
             onClick={handleNext}
-            sx={{
-              position: "absolute",
-              right: { xs: 10, md: 20 },
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.3)",
-              "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.5)",
-              },
-            }}
           >
-            <ArrowForwardIos />
-          </IconButton>
-        </Box>
+            <ChevronRight className="h-6 w-6" />
+            <span className="sr-only">Siguiente</span>
+          </Button>
+        </div>
 
-        <Box sx={{ mt: 2, color: "white", textAlign: "center" }}>
-          <Typography variant="h6" component="h3">
-            {currentImage.alt}
-          </Typography>
-          {currentImage.museum && (
-            <Typography variant="body2" sx={{ color: "#d4af37", mt: 0.5 }}>
-              {currentImage.museum}
-            </Typography>
+        <div className="p-6 text-center">
+          <h3 className="text-xl font-bold mb-1">{currentImage?.alt}</h3>
+          {currentImage?.museum && (
+            <Badge className="bg-[#d4af37] text-black hover:bg-[#c49f32] mb-3">{currentImage.museum}</Badge>
           )}
-          {currentImage.description && (
-            <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.7)", mt: 1 }}>
-              {currentImage.description}
-            </Typography>
-          )}
-          <Typography variant="caption" sx={{ display: "block", mt: 1, color: "rgba(255,255,255,0.5)" }}>
+          {currentImage?.description && <p className="text-gray-300 mb-2">{currentImage.description}</p>}
+          <p className="text-xs text-gray-400">
             {index + 1} / {images.length}
-          </Typography>
-        </Box>
-      </Box>
-    </Modal>
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }

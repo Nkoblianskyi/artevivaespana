@@ -253,7 +253,7 @@ export default function NoticiasPage() {
                   >
                     <Link href={`/noticias/${noticia.slug}`}>
                       <Image
-                        src={noticia.image || "/placeholder.svg"}
+                        src={noticia.image || "/stadium-tunnel-view.png"}
                         alt={noticia.title}
                         fill
                         style={{ objectFit: "cover" }}
@@ -393,7 +393,7 @@ export default function NoticiasPage() {
                       >
                         <Link href={`/noticias/${noticia.slug}`}>
                           <Image
-                            src={noticia.image || "/placeholder.svg"}
+                            src={noticia.image || "/prado.png"}
                             alt={noticia.title}
                             fill
                             style={{ objectFit: "cover" }}
