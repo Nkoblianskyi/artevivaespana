@@ -379,44 +379,6 @@ export default function NoticiaDetallePage() {
                 <Typography variant="h6" sx={{ mb: 2 }}>
                   Compartir este artículo
                 </Typography>
-                <Box sx={{ display: "flex", gap: 2 }}>
-                  <IconButton
-                    sx={{
-                      color: "#1877F2",
-                      bgcolor: "rgba(24, 119, 242, 0.1)",
-                      "&:hover": { bgcolor: "rgba(24, 119, 242, 0.2)" },
-                    }}
-                  >
-                    <Facebook />
-                  </IconButton>
-                  <IconButton
-                    sx={{
-                      color: "#1DA1F2",
-                      bgcolor: "rgba(29, 161, 242, 0.1)",
-                      "&:hover": { bgcolor: "rgba(29, 161, 242, 0.2)" },
-                    }}
-                  >
-                    <Twitter />
-                  </IconButton>
-                  <IconButton
-                    sx={{
-                      color: "#0A66C2",
-                      bgcolor: "rgba(10, 102, 194, 0.1)",
-                      "&:hover": { bgcolor: "rgba(10, 102, 194, 0.2)" },
-                    }}
-                  >
-                    <LinkedIn />
-                  </IconButton>
-                  <IconButton
-                    sx={{
-                      color: "#25D366",
-                      bgcolor: "rgba(37, 211, 102, 0.1)",
-                      "&:hover": { bgcolor: "rgba(37, 211, 102, 0.2)" },
-                    }}
-                  >
-                    <WhatsApp />
-                  </IconButton>
-                </Box>
               </Box>
             </Grid>
 
