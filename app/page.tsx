@@ -134,7 +134,7 @@ export default function Home() {
 
               <Button
                 component={Link}
-                href="/sobre-nosotros"
+                href="/museos"
                 variant="text"
                 sx={{
                   color: "#d4af37",

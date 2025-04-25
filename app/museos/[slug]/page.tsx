@@ -113,8 +113,6 @@ const museosData = {
       
       <p><strong>Trofeos:</strong> El museo exhibe todos los trofeos conquistados por el club a lo largo de su historia, incluyendo las Copas de Europa/Champions League, Ligas españolas, Copas del Rey, Mundiales de Clubes y muchos más. Destaca especialmente la sección dedicada a las cinco Champions League ganadas por el equipo.</p>
       
-      <p><strong>Zona Messi:</strong> Un espacio dedicado al que muchos consideran el mejor jugador de la historia del club, Lionel Messi. Aquí se exhiben sus Balones de Oro, Botas de Oro y otros reconocimientos individuales, así como objetos personales y vídeos de sus mejores momentos.</p>
-      
       <p><strong>Espacio Multimedia:</strong> Área interactiva donde los visitantes pueden revivir los momentos más gloriosos del club a través de pantallas táctiles, proyecciones audiovisuales y otros elementos multimedia.</p>
       
       <p><strong>Colección de Camisetas:</strong> El museo cuenta con una extensa colección de camisetas históricas del club, desde las primeras de principios del siglo XX hasta las más recientes, pasando por las utilizadas en finales y partidos memorables.</p>
@@ -166,13 +164,13 @@ const museosData = {
     ],
   },
   nadal: {
-    name: "Museo del Tenis Rafael Nadal",
+    name: "Museo del Tenis",
     description:
-      "El Rafa Nadal Museum Xperience, ubicado en Manacor, Mallorca, es un espacio interactivo dedicado a la carrera del tenista español Rafael Nadal y al deporte en general.",
+      "El Museum Xperience, ubicado en Manacor, Mallorca, es un espacio interactivo dedicado a la carrera del tenista español Rafael Nadal y al deporte en general.",
     longDescription:
       "El Museo Rafael Nadal ofrece a los visitantes la oportunidad de conocer de cerca la trayectoria de uno de los mejores tenistas de la historia. El recorrido incluye sus trofeos más importantes, como los de Roland Garros, Wimbledon, US Open y Australian Open, así como equipamiento deportivo utilizado por el campeón mallorquín. Además, el museo cuenta con una zona interactiva donde los visitantes pueden poner a prueba sus habilidades en diferentes deportes mediante simuladores de última generación.",
     history: `
-      <p>El Rafa Nadal Museum Xperience fue inaugurado en 2016 como parte del complejo Rafa Nadal Academy by Movistar, en Manacor, Mallorca, ciudad natal del tenista. El museo nació con el objetivo de compartir con el público la trayectoria deportiva de Rafael Nadal y transmitir los valores que han guiado su carrera.</p>
+      <p>El Museum Xperience fue inaugurado en 2016 como parte del complejo  Academy by Movistar, en Manacor, Mallorca, ciudad natal del tenista. El museo nació con el objetivo de compartir con el público la trayectoria deportiva de Rafael Nadal y transmitir los valores que han guiado su carrera.</p>
       
       <p>El proyecto fue concebido por el propio Nadal y su equipo, quienes querían crear un espacio que no solo mostrara sus logros deportivos, sino que también ofreciera una experiencia interactiva y educativa para los visitantes, especialmente para los más jóvenes.</p>
       
@@ -181,7 +179,7 @@ const museosData = {
       <p>El museo forma parte de un complejo deportivo más amplio que incluye la academia de tenis, instalaciones deportivas de primer nivel y un centro de fitness y spa, convirtiéndose en un referente para el turismo deportivo en Mallorca.</p>
     `,
     collection: `
-      <p>El Rafa Nadal Museum Xperience alberga una impresionante colección que documenta la carrera de uno de los mejores tenistas de todos los tiempos. Entre los elementos más destacados se encuentran:</p>
+      <p>El Museum Xperience alberga una impresionante colección que documenta la carrera de uno de los mejores tenistas de todos los tiempos. Entre los elementos más destacados se encuentran:</p>
       
       <p><strong>Trofeos de Grand Slam:</strong> El museo exhibe réplicas de los trofeos de Grand Slam ganados por Nadal, incluyendo sus numerosos Roland Garros, Wimbledon, US Open y Australian Open. Cada trofeo está acompañado de información sobre el torneo y la final correspondiente.</p>
       
