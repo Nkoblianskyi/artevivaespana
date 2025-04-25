@@ -453,13 +453,14 @@ const museosData = {
   // Añadir más museos según sea necesario
 }
 
-export default function MuseoPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params)
+export default function MuseoPage({ params }: { params: { slug: string } }) {
+  const { slug } = params
   const museo = museosData[slug as keyof typeof museosData]
 
   if (!museo) {
     notFound()
   }
+
 
   // Datos estructurados para SEO (Schema.org)
   const schemaData = {
