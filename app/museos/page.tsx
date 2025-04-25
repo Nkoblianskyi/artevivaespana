@@ -46,7 +46,7 @@ export default function MuseosPage() {
     {
       id: 5,
       name: "Museo Taurino de Madrid",
-      image: "/placeholder.svg?height=400&width=600&query=Museo Taurino, Madrid",
+      image: "/museum-madrid.png",
       description: "Colección de trajes, carteles y enseres relacionados con la tauromaquia española.",
       category: "Tauromaquia",
       location: "Madrid",
@@ -55,7 +55,7 @@ export default function MuseosPage() {
     {
       id: 6,
       name: "Museo del Tenis Rafael Nadal",
-      image: "/placeholder.svg?height=400&width=600&query=Museo Rafael Nadal, Mallorca",
+      image: "/museum-rafal.png",
       description: "Dedicado a la carrera del tenista español más laureado de la historia.",
       category: "Deporte",
       location: "Mallorca",

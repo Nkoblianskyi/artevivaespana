@@ -2,12 +2,20 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Container, Typography, Box, Grid, TextField, Button, Paper, Breadcrumbs, Alert, Collapse } from "@mui/material"
 import { LocationOn, Phone, Email } from "@mui/icons-material"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+
+// Interfaz para los errores del formulario
+interface FormErrors {
+  nombre: string
+  email: string
+  telefono: string
+  mensaje: string
+}
 
 export default function ContactoPage() {
   const [formData, setFormData] = useState({
@@ -18,7 +26,71 @@ export default function ContactoPage() {
     mensaje: "",
   })
 
+  const [errors, setErrors] = useState<FormErrors>({
+    nombre: "",
+    email: "",
+    telefono: "",
+    mensaje: "",
+  })
+
+  const [formValid, setFormValid] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  // Validar el formulario cuando cambian los datos
+  useEffect(() => {
+    validateForm()
+  }, [formData])
+
+  const validateForm = () => {
+    const newErrors: FormErrors = {
+      nombre: "",
+      email: "",
+      telefono: "",
+      mensaje: "",
+    }
+    let isValid = true
+
+    // Validar nombre
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = "El nombre es obligatorio"
+      isValid = false
+    } else if (formData.nombre.trim().length < 3) {
+      newErrors.nombre = "El nombre debe tener al menos 3 caracteres"
+      isValid = false
+    }
+
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!formData.email.trim()) {
+      newErrors.email = "El correo electrónico es obligatorio"
+      isValid = false
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Introduce un correo electrónico válido"
+      isValid = false
+    }
+
+    // Validar teléfono (opcional pero si se proporciona debe ser válido)
+    if (formData.telefono.trim()) {
+      const phoneRegex = /^[0-9+\s()-]{9,15}$/
+      if (!phoneRegex.test(formData.telefono)) {
+        newErrors.telefono = "Introduce un número de teléfono válido"
+        isValid = false
+      }
+    }
+
+    // Validar mensaje
+    if (!formData.mensaje.trim()) {
+      newErrors.mensaje = "El mensaje es obligatorio"
+      isValid = false
+    } else if (formData.mensaje.trim().length < 10) {
+      newErrors.mensaje = "El mensaje debe tener al menos 10 caracteres"
+      isValid = false
+    }
+
+    setErrors(newErrors)
+    setFormValid(isValid)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -30,23 +102,31 @@ export default function ContactoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica para enviar el formulario
-    console.log(formData)
-    setSuccess(true)
+    setSubmitted(true)
 
-    // Resetear el formulario
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      museo: "",
-      mensaje: "",
-    })
+    // Validar una última vez antes de enviar
+    validateForm()
 
-    // Ocultar el mensaje después de 5 segundos
-    setTimeout(() => {
-      setSuccess(false)
-    }, 5000)
+    if (formValid) {
+      // Aquí iría la lógica para enviar el formulario
+      console.log(formData)
+      setSuccess(true)
+
+      // Resetear el formulario
+      setFormData({
+        nombre: "",
+        email: "",
+        telefono: "",
+        museo: "",
+        mensaje: "",
+      })
+      setSubmitted(false)
+
+      // Ocultar el mensaje después de 5 segundos
+      setTimeout(() => {
+        setSuccess(false)
+      }, 5000)
+    }
   }
 
   return (
@@ -68,8 +148,7 @@ export default function ContactoPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage:
-              'url("/placeholder.svg?height=800&width=1600&query=Spanish museum contact, information desk")',
+            backgroundImage: 'url("/museo-informacion.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",
@@ -140,7 +219,7 @@ export default function ContactoPage() {
                 </Alert>
               </Collapse>
 
-              <Box component="form" onSubmit={handleSubmit}>
+              <Box component="form" onSubmit={handleSubmit} noValidate>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <TextField
@@ -151,6 +230,8 @@ export default function ContactoPage() {
                       onChange={handleChange}
                       required
                       variant="outlined"
+                      error={submitted && !!errors.nombre}
+                      helperText={submitted && errors.nombre}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
@@ -162,12 +243,18 @@ export default function ContactoPage() {
                           "&.Mui-focused fieldset": {
                             borderColor: "#d4af37",
                           },
+                          "&.Mui-error fieldset": {
+                            borderColor: "#f44336",
+                          },
                         },
                         "& .MuiInputLabel-root": {
                           color: "rgba(255, 255, 255, 0.7)",
                         },
                         "& .MuiInputBase-input": {
                           color: "white",
+                        },
+                        "& .MuiFormHelperText-root": {
+                          color: "#f44336",
                         },
                       }}
                     />
@@ -182,6 +269,8 @@ export default function ContactoPage() {
                       onChange={handleChange}
                       required
                       variant="outlined"
+                      error={submitted && !!errors.email}
+                      helperText={submitted && errors.email}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
@@ -193,12 +282,18 @@ export default function ContactoPage() {
                           "&.Mui-focused fieldset": {
                             borderColor: "#d4af37",
                           },
+                          "&.Mui-error fieldset": {
+                            borderColor: "#f44336",
+                          },
                         },
                         "& .MuiInputLabel-root": {
                           color: "rgba(255, 255, 255, 0.7)",
                         },
                         "& .MuiInputBase-input": {
                           color: "white",
+                        },
+                        "& .MuiFormHelperText-root": {
+                          color: "#f44336",
                         },
                       }}
                     />
@@ -211,6 +306,8 @@ export default function ContactoPage() {
                       value={formData.telefono}
                       onChange={handleChange}
                       variant="outlined"
+                      error={submitted && !!errors.telefono}
+                      helperText={submitted && errors.telefono}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
@@ -222,12 +319,18 @@ export default function ContactoPage() {
                           "&.Mui-focused fieldset": {
                             borderColor: "#d4af37",
                           },
+                          "&.Mui-error fieldset": {
+                            borderColor: "#f44336",
+                          },
                         },
                         "& .MuiInputLabel-root": {
                           color: "rgba(255, 255, 255, 0.7)",
                         },
                         "& .MuiInputBase-input": {
                           color: "white",
+                        },
+                        "& .MuiFormHelperText-root": {
+                          color: "#f44336",
                         },
                       }}
                     />
@@ -272,6 +375,8 @@ export default function ContactoPage() {
                       multiline
                       rows={4}
                       variant="outlined"
+                      error={submitted && !!errors.mensaje}
+                      helperText={submitted && errors.mensaje}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
@@ -283,12 +388,18 @@ export default function ContactoPage() {
                           "&.Mui-focused fieldset": {
                             borderColor: "#d4af37",
                           },
+                          "&.Mui-error fieldset": {
+                            borderColor: "#f44336",
+                          },
                         },
                         "& .MuiInputLabel-root": {
                           color: "rgba(255, 255, 255, 0.7)",
                         },
                         "& .MuiInputBase-input": {
                           color: "white",
+                        },
+                        "& .MuiFormHelperText-root": {
+                          color: "#f44336",
                         },
                       }}
                     />
@@ -305,6 +416,10 @@ export default function ContactoPage() {
                         py: 1.5,
                         "&:hover": {
                           backgroundColor: "#b8971f",
+                        },
+                        "&.Mui-disabled": {
+                          backgroundColor: "rgba(212, 175, 55, 0.5)",
+                          color: "rgba(0, 0, 0, 0.5)",
                         },
                       }}
                     >

@@ -9,13 +9,12 @@ import { CalendarToday, ArrowForward } from "@mui/icons-material"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-// Datos de ejemplo para las noticias
 const noticias = [
   {
     id: 1,
-    title: "Los 10 museos más visitados de España en 2023",
-    slug: "museos-mas-visitados-espana-2023",
-    date: "15 de enero de 2023",
+    title: "Los 10 museos más visitados de España en 2025",
+    slug: "museos-mas-visitados-espana-2025",
+    date: "15 de enero de 2025",
     category: "Ranking",
     image: "/news-museum-ranking.png",
     excerpt:
@@ -26,7 +25,7 @@ const noticias = [
     id: 2,
     title: "Nueva exposición de Picasso en el Museo Reina Sofía",
     slug: "nueva-exposicion-picasso-reina-sofia",
-    date: "3 de febrero de 2023",
+    date: "3 de febrero de 2025",
     category: "Exposiciones",
     image: "/news-picasso-exhibition.png",
     excerpt:
@@ -37,7 +36,7 @@ const noticias = [
     id: 3,
     title: "El Museo del Prado adquiere una obra inédita de Goya",
     slug: "museo-prado-adquiere-obra-inedita-goya",
-    date: "20 de marzo de 2023",
+    date: "20 de marzo de 2025",
     category: "Adquisiciones",
     image: "/news-goya-acquisition.png",
     excerpt:
@@ -48,7 +47,7 @@ const noticias = [
     id: 4,
     title: "El Museo Thyssen celebra su 30 aniversario con entrada gratuita",
     slug: "museo-thyssen-celebra-30-aniversario",
-    date: "8 de abril de 2023",
+    date: "8 de abril de 2025",
     category: "Eventos",
     image: "/news-thyssen-anniversary.png",
     excerpt:
@@ -59,7 +58,7 @@ const noticias = [
     id: 5,
     title: "Descubren pinturas rupestres en una cueva de Cantabria",
     slug: "descubren-pinturas-rupestres-cueva-cantabria",
-    date: "12 de mayo de 2023",
+    date: "12 de mayo de 2025",
     category: "Descubrimientos",
     image: "/news-cave-paintings.png",
     excerpt:
@@ -68,20 +67,20 @@ const noticias = [
   },
   {
     id: 6,
-    title: "El Museo Guggenheim Bilbao presenta su programación para 2024",
-    slug: "guggenheim-bilbao-programacion-2024",
-    date: "25 de junio de 2023",
+    title: "El Museo Guggenheim Bilbao presenta su programación para 2026",
+    slug: "guggenheim-bilbao-programacion-2026",
+    date: "25 de junio de 2025",
     category: "Programación",
     image: "/news-guggenheim-program.png",
     excerpt:
-      "El Museo Guggenheim de Bilbao ha presentado su programación de exposiciones para el año 2024, con grandes nombres del arte contemporáneo.",
+      "El Museo Guggenheim de Bilbao ha presentado su programación de exposiciones para el año 2026, con grandes nombres del arte contemporáneo.",
     featured: false,
   },
   {
     id: 7,
     title: "Restauran 'Las Meninas' de Velázquez tras un estudio exhaustivo",
     slug: "restauran-las-meninas-velazquez",
-    date: "10 de julio de 2023",
+    date: "10 de julio de 2025",
     category: "Restauración",
     image: "/news-meninas-restoration.png",
     excerpt:
@@ -92,7 +91,7 @@ const noticias = [
     id: 8,
     title: "El Museo Arqueológico Nacional renueva sus salas de prehistoria",
     slug: "museo-arqueologico-renueva-salas-prehistoria",
-    date: "5 de agosto de 2023",
+    date: "5 de agosto de 2025",
     category: "Renovaciones",
     image: "/news-archaeological-museum.png",
     excerpt:
@@ -103,7 +102,7 @@ const noticias = [
     id: 9,
     title: "Récord de visitantes en los museos españoles durante el verano",
     slug: "record-visitantes-museos-espanoles-verano",
-    date: "18 de septiembre de 2023",
+    date: "18 de septiembre de 2025",
     category: "Estadísticas",
     image: "/news-museum-visitors.png",
     excerpt:
@@ -114,7 +113,7 @@ const noticias = [
     id: 10,
     title: "Nueva app para recorrer el Triángulo del Arte de Madrid",
     slug: "nueva-app-triangulo-arte-madrid",
-    date: "22 de octubre de 2023",
+    date: "22 de octubre de 2025",
     category: "Tecnología",
     image: "/news-art-triangle-app.png",
     excerpt:
@@ -125,7 +124,7 @@ const noticias = [
     id: 11,
     title: "El Museo Sorolla reabre sus puertas tras dos años de reformas",
     slug: "museo-sorolla-reabre-tras-reformas",
-    date: "14 de noviembre de 2023",
+    date: "14 de noviembre de 2025",
     category: "Reaperturas",
     image: "/news-sorolla-reopening.png",
     excerpt:
@@ -136,11 +135,11 @@ const noticias = [
     id: 12,
     title: "Exposición sobre el flamenco recorre los principales museos andaluces",
     slug: "exposicion-flamenco-museos-andaluces",
-    date: "3 de diciembre de 2023",
+    date: "3 de diciembre de 2025",
     category: "Exposiciones",
     image: "/news-flamenco-exhibition.png",
     excerpt:
-      "Una exposición itinerante sobre la historia y evolución del flamenco recorrerá los principales museos de Andalucía durante 2024.",
+      "Una exposición itinerante sobre la historia y evolución del flamenco recorrerá los principales museos de Andalucía durante 2026.",
     featured: false,
   },
 ]

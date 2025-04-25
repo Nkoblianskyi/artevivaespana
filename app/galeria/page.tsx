@@ -7,9 +7,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Container, Typography, Box, Button, Breadcrumbs, Tabs, Tab, CircularProgress } from "@mui/material"
 import Grid from "@mui/material/Grid"
+import { ArrowForward } from "@mui/icons-material"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import ImageModal from "@/components/image-modal"
+import GalleryCarousel from "@/components/gallery-carousel"
 
 // Datos de las imágenes de la galería
 const galleryData = [
@@ -33,10 +35,10 @@ const galleryData = [
   {
     id: 3,
     src: "/barcelona-champions-league-display.png",
-    alt: "Trofeos de Champions League",
+    alt: "Trofeos del FC Barcelona",
     category: "Deporte",
     museum: "Museo del FC Barcelona",
-    description: "Colección de las cinco Copas de Europa ganadas por el FC Barcelona a lo largo de su historia.",
+    description: "Colección de trofeos ganados por el FC Barcelona a lo largo de su historia.",
   },
   {
     id: 4,
@@ -120,7 +122,7 @@ const galleryData = [
   },
   {
     id: 14,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish flamenco dress exhibition",
+    src: "/flamenco-dress-display.png",
     alt: "Trajes de flamenca",
     category: "Cultura",
     museum: "Museo del Baile Flamenco",
@@ -128,7 +130,7 @@ const galleryData = [
   },
   {
     id: 15,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Thyssen impressionist",
+    src: "/thyssen-impressionist-garden.png",
     alt: "Mujer con sombrilla",
     category: "Arte",
     museum: "Museo Thyssen-Bornemisza",
@@ -142,97 +144,68 @@ const galleryData = [
     museum: "Museo Rafael Nadal",
     description: "Medalla de oro ganada por Rafael Nadal en los Juegos Olímpicos de Pekín 2008.",
   },
-  {
-    id: 17,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Picasso blue period",
-    alt: "La vida",
-    category: "Arte",
-    museum: "Museo Picasso Barcelona",
-    description: "Obra emblemática del período azul de Pablo Picasso, pintada en 1903.",
-  },
-  {
-    id: 18,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact medieval manuscript",
-    alt: "Beato de Liébana",
-    category: "Historia",
-    museum: "Biblioteca Nacional de España",
-    description: "Manuscrito medieval iluminado del siglo X, con comentarios al Apocalipsis.",
-  },
-  {
-    id: 19,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Zurbaran painting",
-    alt: "Bodegón con cacharros",
-    category: "Arte",
-    museum: "Museo del Prado",
-    description: "Naturaleza muerta de Francisco de Zurbarán, pintada hacia 1650.",
-  },
-  {
-    id: 20,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Goya black paintings",
-    alt: "Saturno devorando a su hijo",
-    category: "Arte",
-    museum: "Museo del Prado",
-    description: "Una de las Pinturas negras de Francisco de Goya, realizada entre 1819 y 1823.",
-  },
-  {
-    id: 21,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Velazquez painting",
-    alt: "Las hilanderas",
-    category: "Arte",
-    museum: "Museo del Prado",
-    description: "Obra de Diego Velázquez, también conocida como 'La fábula de Aracne', pintada hacia 1657.",
-  },
-  {
-    id: 22,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Greco painting",
-    alt: "El entierro del Conde de Orgaz",
-    category: "Arte",
-    museum: "Iglesia de Santo Tomé",
-    description: "Obra maestra de El Greco, pintada entre 1586 y 1588.",
-  },
-  {
-    id: 23,
-    src: "/placeholder.svg?height=400&width=600&query=Spanish museum artifact Iberian sculpture",
-    alt: "Dama de Elche",
-    category: "Historia",
-    museum: "Museo Arqueológico Nacional",
-    description: "Busto íbero del siglo IV a.C., uno de los iconos de la arqueología española.",
-  },
-  {
-    id: 24,
-    src: "/barcelona-jersey-wall.png",
-    alt: "Bisonte de Altamira",
-    category: "Historia",
-    museum: "Museo de Altamira",
-    description: "Reproducción de las pinturas rupestres de la cueva de Altamira, datadas hace unos 14.000 años.",
-  },
 ]
+
+// Categorías para filtrar
+const categorias = ["Todos", "Arte", "Deporte", "Historia", "Cultura"]
+
+// Función para obtener las imágenes destacadas para el carrusel
+const getCarouselItems = () => {
+  return [
+    {
+      image: "/Prado-Museum-Artifact.png",
+      title: "Las Meninas de Velázquez",
+      description: "Una de las obras maestras más importantes de la historia del arte occidental, pintada en 1656.",
+      link: "/galeria",
+    },
+    {
+      image: "/passionate-flamenco.png",
+      title: "Arte del Flamenco",
+      description: "Representación del arte del flamenco, declarado Patrimonio Cultural Inmaterial de la Humanidad.",
+      link: "/galeria",
+    },
+    {
+      image: "/tennis-trophy-display.png",
+      title: "Trofeos de Grand Slam",
+      description: "Colección de trofeos de Grand Slam ganados por Rafael Nadal a lo largo de su carrera.",
+      link: "/galeria",
+    },
+  ]
+}
 
 export default function GaleriaPage() {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
-  const [filteredImages, setFilteredImages] = useState(galleryData)
+  const [filteredImages, setFilteredImages] = useState<typeof galleryData>([])
   const [modalOpen, setModalOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(false)
-  const [visibleCount, setVisibleCount] = useState(12)
 
-  const categories = ["Todos", "Arte", "Deporte", "Historia", "Cultura"]
-
+  // Efecto para filtrar las imágenes por categoría
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       if (selectedCategory === "Todos") {
-        setFilteredImages(galleryData)
+        // Para cada categoría, mostrar solo 2 imágenes
+        const limitedImages: typeof galleryData = []
+        const categories = ["Arte", "Deporte", "Historia", "Cultura"]
+
+        categories.forEach((category) => {
+          const categoryImages = galleryData.filter((item) => item.category === category).slice(0, 2)
+          limitedImages.push(...categoryImages)
+        })
+
+        setFilteredImages(limitedImages)
       } else {
-        setFilteredImages(galleryData.filter((item) => item.category === selectedCategory))
+        // Para la categoría seleccionada, mostrar solo 2 imágenes
+        const categoryImages = galleryData.filter((item) => item.category === selectedCategory).slice(0, 2)
+        setFilteredImages(categoryImages)
       }
       setLoading(false)
-    }, 500) // Simulamos una pequeña carga para mostrar el efecto
+    }, 500)
   }, [selectedCategory])
 
   const handleCategoryChange = (_event: React.SyntheticEvent, newValue: string) => {
     setSelectedCategory(newValue)
-    setVisibleCount(12) // Resetear la cantidad visible al cambiar de categoría
   }
 
   const handleImageClick = (index: number) => {
@@ -240,15 +213,10 @@ export default function GaleriaPage() {
     setModalOpen(true)
   }
 
-  const handleLoadMore = () => {
-    setLoading(true)
-    setTimeout(() => {
-      setVisibleCount((prev) => Math.min(prev + 8, filteredImages.length))
-      setLoading(false)
-    }, 500)
+  const handleViewAllCategory = (category: string) => {
+    // Aquí podrías implementar la lógica para ver todas las imágenes de una categoría
+    console.log(`Ver todas las imágenes de la categoría: ${category}`)
   }
-
-  const visibleImages = filteredImages.slice(0, visibleCount)
 
   return (
     <main>
@@ -269,8 +237,7 @@ export default function GaleriaPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage:
-              'url("/placeholder.svg?height=800&width=1600&query=Spanish museum gallery, art exhibition")',
+            backgroundImage: 'url("/museo-madrid-gallery.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4)",
@@ -319,8 +286,29 @@ export default function GaleriaPage() {
         </Container>
       </Box>
 
-      {/* Gallery */}
+      {/* Carrusel destacado */}
       <Box sx={{ py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            component="h2"
+            sx={{
+              mb: 4,
+              fontSize: { xs: "1.75rem", md: "2.5rem" },
+              textAlign: "center",
+            }}
+          >
+            Obras Destacadas
+          </Typography>
+
+          <Box sx={{ width: "100px", height: "2px", bgcolor: "#d4af37", mx: "auto", mb: 6 }} />
+
+          <GalleryCarousel items={getCarouselItems()} />
+        </Container>
+      </Box>
+
+      {/* Categorías y Galería */}
+      <Box sx={{ py: 8, bgcolor: "#1a1a1a" }}>
         <Container maxWidth="lg">
           <Box sx={{ mb: 6, display: "flex", justifyContent: "center" }}>
             <Tabs
@@ -338,13 +326,13 @@ export default function GaleriaPage() {
                 },
               }}
             >
-              {categories.map((category) => (
-                <Tab key={category} label={category} value={category} />
+              {categorias.map((categoria) => (
+                <Tab key={categoria} label={categoria} value={categoria} />
               ))}
             </Tabs>
           </Box>
 
-          {loading && visibleCount === 12 ? (
+          {loading ? (
             <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
               <CircularProgress sx={{ color: "#d4af37" }} />
             </Box>
@@ -358,106 +346,218 @@ export default function GaleriaPage() {
               </Typography>
             </Box>
           ) : (
-            <Grid container spacing={3}>
-              {visibleImages.map((item, index) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      paddingTop: "75%",
-                      borderRadius: "4px",
-                      overflow: "hidden",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                      cursor: "pointer",
-                      "&:hover": {
-                        transform: "scale(1.03)",
-                        boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                        "& .overlay": {
-                          opacity: 1,
-                        },
-                      },
-                    }}
-                    onClick={() => handleImageClick(index)}
-                  >
-                    <Image
-                      src={item.src || "/placeholder.svg"}
-                      alt={item.alt}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"
-                    />
-                    <Box
-                      className="overlay"
+            <>
+              {/* Mostrar imágenes por categoría */}
+              {selectedCategory === "Todos" ? (
+                // Mostrar todas las categorías con máximo 2 imágenes por categoría
+                categorias
+                  .slice(1)
+                  .map((categoria) => {
+                    const categoryImages = filteredImages.filter((item) => item.category === categoria)
+                    if (categoryImages.length === 0) return null
+
+                    return (
+                      <Box key={categoria} sx={{ mb: 8 }}>
+                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+                          <Typography variant="h4" component="h3">
+                            {categoria}
+                          </Typography>
+                          <Button
+                            onClick={() => handleViewAllCategory(categoria)}
+                            sx={{
+                              color: "#d4af37",
+                              "&:hover": {
+                                backgroundColor: "transparent",
+                                textDecoration: "underline",
+                              },
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            Ver todo <ArrowForward sx={{ ml: 0.5, fontSize: "1rem" }} />
+                          </Button>
+                        </Box>
+
+                        <Grid container spacing={3}>
+                          {categoryImages.map((item, index) => (
+                            <Grid item xs={12} sm={6} md={6} key={item.id}>
+                              <Box
+                                sx={{
+                                  position: "relative",
+                                  paddingTop: "75%",
+                                  borderRadius: "4px",
+                                  overflow: "hidden",
+                                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                  cursor: "pointer",
+                                  "&:hover": {
+                                    transform: "scale(1.03)",
+                                    boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                                    "& .overlay": {
+                                      opacity: 1,
+                                    },
+                                  },
+                                }}
+                                onClick={() => handleImageClick(filteredImages.indexOf(item))}
+                              >
+                                <Image
+                                  src={item.src || "/placeholder.svg"}
+                                  alt={item.alt}
+                                  fill
+                                  style={{ objectFit: "cover" }}
+                                  sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
+                                />
+                                <Box
+                                  className="overlay"
+                                  sx={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100%",
+                                    height: "100%",
+                                    backgroundColor: "rgba(0,0,0,0.7)",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    opacity: 0,
+                                    transition: "opacity 0.3s ease",
+                                    padding: 2,
+                                  }}
+                                >
+                                  <Typography
+                                    variant="subtitle1"
+                                    sx={{ color: "white", textAlign: "center", fontWeight: "bold" }}
+                                  >
+                                    {item.alt}
+                                  </Typography>
+                                  <Typography variant="body2" sx={{ color: "#d4af37", textAlign: "center", mt: 1 }}>
+                                    {item.museum}
+                                  </Typography>
+                                  <Button
+                                    sx={{
+                                      color: "white",
+                                      borderColor: "white",
+                                      borderWidth: 1,
+                                      borderStyle: "solid",
+                                      mt: 2,
+                                      "&:hover": {
+                                        borderColor: "#d4af37",
+                                        color: "#d4af37",
+                                      },
+                                    }}
+                                    size="small"
+                                  >
+                                    Ver Detalle
+                                  </Button>
+                                </Box>
+                              </Box>
+                            </Grid>
+                          ))}
+                        </Grid>
+                      </Box>
+                    )
+                  })
+              ) : (
+                // Mostrar solo la categoría seleccionada
+                <Box>
+                  <Grid container spacing={3}>
+                    {filteredImages.map((item, index) => (
+                      <Grid item xs={12} sm={6} md={6} key={item.id}>
+                        <Box
+                          sx={{
+                            position: "relative",
+                            paddingTop: "75%",
+                            borderRadius: "4px",
+                            overflow: "hidden",
+                            transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                            cursor: "pointer",
+                            "&:hover": {
+                              transform: "scale(1.03)",
+                              boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                              "& .overlay": {
+                                opacity: 1,
+                              },
+                            },
+                          }}
+                          onClick={() => handleImageClick(index)}
+                        >
+                          <Image
+                            src={item.src || "/placeholder.svg"}
+                            alt={item.alt}
+                            fill
+                            style={{ objectFit: "cover" }}
+                            sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
+                          />
+                          <Box
+                            className="overlay"
+                            sx={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              width: "100%",
+                              height: "100%",
+                              backgroundColor: "rgba(0,0,0,0.7)",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              opacity: 0,
+                              transition: "opacity 0.3s ease",
+                              padding: 2,
+                            }}
+                          >
+                            <Typography
+                              variant="subtitle1"
+                              sx={{ color: "white", textAlign: "center", fontWeight: "bold" }}
+                            >
+                              {item.alt}
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: "#d4af37", textAlign: "center", mt: 1 }}>
+                              {item.museum}
+                            </Typography>
+                            <Button
+                              sx={{
+                                color: "white",
+                                borderColor: "white",
+                                borderWidth: 1,
+                                borderStyle: "solid",
+                                mt: 2,
+                                "&:hover": {
+                                  borderColor: "#d4af37",
+                                  color: "#d4af37",
+                                },
+                              }}
+                              size="small"
+                            >
+                              Ver Detalle
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Grid>
+                    ))}
+                  </Grid>
+
+                  <Box sx={{ display: "flex", justifyContent: "center", mt: 6 }}>
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleViewAllCategory(selectedCategory)}
                       sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0,0,0,0.7)",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        opacity: 0,
-                        transition: "opacity 0.3s ease",
-                        padding: 2,
+                        borderColor: "#d4af37",
+                        color: "#d4af37",
+                        px: 4,
+                        py: 1.5,
+                        "&:hover": {
+                          borderColor: "#d4af37",
+                          backgroundColor: "rgba(212, 175, 55, 0.1)",
+                        },
                       }}
                     >
-                      <Typography variant="subtitle1" sx={{ color: "white", textAlign: "center", fontWeight: "bold" }}>
-                        {item.alt}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "#d4af37", textAlign: "center", mt: 1 }}>
-                        {item.museum}
-                      </Typography>
-                      <Button
-                        sx={{
-                          color: "white",
-                          borderColor: "white",
-                          borderWidth: 1,
-                          borderStyle: "solid",
-                          mt: 2,
-                          "&:hover": {
-                            borderColor: "#d4af37",
-                            color: "#d4af37",
-                          },
-                        }}
-                        size="small"
-                      >
-                        Ver Detalle
-                      </Button>
-                    </Box>
+                      Ver Todas las Imágenes de {selectedCategory}
+                    </Button>
                   </Box>
-                </Grid>
-              ))}
-            </Grid>
-          )}
-
-          {!loading && visibleCount < filteredImages.length && (
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 6 }}>
-              <Button
-                variant="outlined"
-                onClick={handleLoadMore}
-                sx={{
-                  borderColor: "#d4af37",
-                  color: "#d4af37",
-                  px: 4,
-                  py: 1.5,
-                  "&:hover": {
-                    borderColor: "#d4af37",
-                    backgroundColor: "rgba(212, 175, 55, 0.1)",
-                  },
-                }}
-              >
-                Cargar Más
-              </Button>
-            </Box>
-          )}
-
-          {loading && visibleCount > 12 && (
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-              <CircularProgress sx={{ color: "#d4af37" }} size={30} />
-            </Box>
+                </Box>
+              )}
+            </>
           )}
         </Container>
       </Box>
