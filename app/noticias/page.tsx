@@ -49,7 +49,7 @@ const noticias = [
     slug: "museo-thyssen-celebra-30-aniversario",
     date: "8 de abril de 2025",
     category: "Eventos",
-    image: "/news-thyssen-anniversary.png",
+    image: "/trajes.jpg",
     excerpt:
       "Con motivo de su 30 aniversario, el Museo Thyssen-Bornemisza ofrecerá entrada gratuita durante todo el mes de octubre y organizará actividades especiales.",
     featured: false,
@@ -71,7 +71,7 @@ const noticias = [
     slug: "guggenheim-bilbao-programacion-2026",
     date: "25 de junio de 2025",
     category: "Programación",
-    image: "/bstract-forms-reina-sofia.png",
+    image: "/surreal-still-life.png",
     excerpt:
       "El Museo Guggenheim de Bilbao ha presentado su programación de exposiciones para el año 2026, con grandes nombres del arte contemporáneo.",
     featured: false,
