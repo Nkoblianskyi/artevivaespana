@@ -228,7 +228,7 @@ export default function NoticiasPage() {
 
           <Grid container spacing={4}>
             {noticiasDestacadas.map((noticia) => (
-              <Grid item xs={12} md={4} key={noticia.id}>
+              <Grid columns={{ xs: 4, md: 12 }}key={noticia.id}>
                 <Box
                   sx={{
                     height: "100%",
@@ -380,7 +380,7 @@ export default function NoticiasPage() {
               {noticiasFiltradas.slice(0, visibles).map((noticia, index) => (
                 <Box key={noticia.id}>
                   <Grid container spacing={4} sx={{ mb: 4 }}>
-                    <Grid item xs={12} md={4}>
+                    <Grid columns={{ xs: 4, md: 12 }}>
                       <Box
                         sx={{
                           position: "relative",
@@ -411,7 +411,7 @@ export default function NoticiasPage() {
                         />
                       </Box>
                     </Grid>
-                    <Grid item xs={12} md={8}>
+                    <Grid columns={{ xs: 12, md: 8 }}>
                       <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                         <CalendarToday sx={{ fontSize: "0.9rem", color: "#d4af37", mr: 1 }} />
                         <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.7)" }}>

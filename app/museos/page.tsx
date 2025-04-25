@@ -155,7 +155,7 @@ export default function MuseosPage() {
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             {museos.map((museo) => (
-              <Grid item xs={12} sm={6} md={4} key={museo.id}>
+              <Grid sx={{ gridColumn: { xs: "span 4", sm: "span 2", md: "span 4" } }} key={museo.id}>
                 <Card
                   sx={{
                     bgcolor: "rgba(26, 26, 26, 0.8)",

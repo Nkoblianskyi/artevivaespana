@@ -8,7 +8,7 @@ export default function Footer() {
     <Box component="footer" sx={{ bgcolor: "#1a1a1a", color: "white", py: 6 }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
+          <Grid columns={{ xs: 4, md: 12 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
               <span style={{ color: "#d4af37" }}>Arte</span>Viva
             </Typography>
@@ -17,7 +17,7 @@ export default function Footer() {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid columns={{ xs: 4, md: 12 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
               Contacto
             </Typography>
@@ -35,7 +35,7 @@ export default function Footer() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid columns={{ xs: 4, md: 12 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
               Boletín Informativo
             </Typography>

@@ -15,6 +15,7 @@ import {
   ListItem,
   ListItemText,
   Box,
+  ListItemButton,
 } from "@mui/material"
 import { Menu as MenuIcon } from "@mui/icons-material"
 
@@ -71,8 +72,10 @@ export default function Header() {
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <List>
             {menuItems.map((item) => (
-              <ListItem button key={item.text} component={Link} href={item.href}>
-                <ListItemText primary={item.text} />
+              <ListItem key={item.text} disablePadding>
+                <ListItemButton component={Link} href={item.href}>
+                  <ListItemText primary={item.text} />
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
