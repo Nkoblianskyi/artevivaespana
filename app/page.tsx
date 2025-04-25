@@ -150,7 +150,7 @@ export default function Home() {
             <Grid item xs={12} md={6}>
               <Box sx={{ position: "relative", height: { xs: "300px", md: "400px" } }}>
                 <Image
-                  src="/placeholder.svg?height=800&width=600&query=Spanish museum gallery, statues"
+                  src="/museo-elegancia-oscura.png"
                   alt="Galería de museo español"
                   fill
                   style={{ objectFit: "cover", borderRadius: "4px" }}
@@ -278,7 +278,7 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    src={`/placeholder.svg?height=400&width=600&query=Spanish museum artifact ${item}`}
+                    src={`/trajes.jpg`}
                     alt={`Galería imagen ${item}`}
                     fill
                     style={{ objectFit: "cover" }}
@@ -324,7 +324,7 @@ export default function Home() {
             width: "100%",
             height: "100%",
             backgroundImage:
-              'url("/placeholder.svg?height=800&width=1600&query=Spanish museum architecture, dark elegant")',
+              'url("/reina-sofia-interior.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.3)",
